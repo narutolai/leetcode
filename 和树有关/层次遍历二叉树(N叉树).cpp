@@ -7,7 +7,8 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
- //层次遍历二叉树，中规中矩的使用队列就行了，反正也是一出队列 一入队列 
+ //层次遍历二叉树，中规中矩的使用队列就行了，反正也是一出队列 一入队列
+//记录每一层的节点个数
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
