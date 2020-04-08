@@ -30,7 +30,7 @@ public:
     }
 };
 
-//普通二叉树
+//普通二叉树 其实就是个后序遍历吧
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
