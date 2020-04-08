@@ -17,7 +17,7 @@ public:
     }
     void backtrace(TreeNode* root){
             if(!root) return ;
-            int len=path.size();   //记录初始状态
+            int len=path.size();   //记录进入节点前的长度
             path+=(path.empty()?"":"->")+to_string(root->val);
             
             if(!root->left&&!root->right)  //到了叶子节点处
@@ -27,6 +27,6 @@ public:
                 backtrace(root->left);
                 backtrace(root->right);
             }
-            path.erase(path.begin()+len,path.end());  //弹出加入的
+            path.erase(path.begin()+len,path.end());  //撤销选择
     }
 };
