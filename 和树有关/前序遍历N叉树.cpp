@@ -17,6 +17,9 @@ public:
     }
 };
 */
+
+//使用一个栈就可以，先把根节点入栈,然后弹出其该节点，但是把其子节点逆序入栈。
+//总之就是一弹 一入 。。。。。
 class Solution {
     //  vector<int> result;
 public:
