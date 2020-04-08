@@ -7,6 +7,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+//关键是 怎么判断一棵树是左叶子节点。
 class Solution {
 public:
     int sumOfLeftLeaves(TreeNode* root) {
