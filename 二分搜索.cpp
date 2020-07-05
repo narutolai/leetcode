@@ -23,10 +23,10 @@ R LM
 
 int leftbound(vector<int>& nums,int target)
 {
- int left=0,right=nums.size()-1;
+ int left=0,right=nums.size()-1,mid=0;
  while(left<=right)
  {
- int mid=(left+right)/2;
+  mid=(left+right)/2;
  if(a[mid]<target) left=mid+1;
  else right=mid-1;
  }
@@ -36,10 +36,10 @@ int leftbound(vector<int>& nums,int target)
 查找数组的右侧边界
 int rightbound(vector<int>& nums,int target)
 {
- int left=0,right=nums.size()-1;
+ int left=0,right=nums.size()-1,mid=0;
  while(left<=right)
  {
- int mid=(left+right)/2;
+  mid=(left+right)/2;
  if(a[mid]<=target) left=mid+1;
  else right=mid-1  ;
  }
