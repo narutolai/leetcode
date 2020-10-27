@@ -45,39 +45,33 @@ int main(int argc, char const *argv[])
 	while(y<n-1)
 	{	
 		int way_flag=-1;
-		
 		//上一步往上走
 		if(last_way==1)
-		{
-			int choice1[3][2]={{cur_x-1,cur_y},{cur_x,cur_y+1},{cur_x+1,cur_y}};
+		{ 
 			 index=random(0,3);
 			 if(index!=1)way_flag=1;
-		
-			 nx=choice1[index][0];
-			 ny=choice1[index][1];
 		}   //上一步往右走
 		else if(last_way==2)
 		{
 
-			int choice2[2][2]={{cur_x,cur_y+1},{cur_x+1,cur_y}};
-			index=random(0,2);
-
+			index=random(0,3);
+			while(index==0)
+			index=random(0,3);
 			if(index==1) way_flag=1;
 			
-
-			 nx=choice2[index][0];
-			 ny=choice2[index][1];
 		}//上一步往左走
 		else if(last_way==0)
 		{
 			
-			 int choice3[2][2]={{cur_x-1,cur_y},{cur_x,cur_y+1}};
-			 index=random(0,2);
+			 index=random(0,3);
+			 while(index==2)
+			 index=random(0,3);
 			 if(index==0) way_flag=1;
-		
-			 nx=choice3[index][0];
-			 ny=choice3[index][1];
 		}
+		
+		int choice3[3][2]={{cur_x-1,cur_y},{cur_x,cur_y+1},{cur_x+1,cur_y}};
+		nx=choice3[index][0];
+		ny=choice3[index][1];
 
 		cout<<"  x: "<<nx<<" y:"<<ny<<endl;
 		//出界重新选一次位置
@@ -117,11 +111,11 @@ int main(int argc, char const *argv[])
 	used++;
 
 	int k=used;
-	int dpd[m][n]={0};
+	int dpd[n][m]={0};
 	cout<<"used: "<<used<<endl;
 	for(int i=0;i<used;i++)
 	{
-		dpd[vec[i].x][vec[i].y]=1;
+		dpd[vec[i].y][vec[i].x]=1;
 		cout<<vec[i].x<<" "<<vec[i].y<<endl;
 	}
 
@@ -180,18 +174,18 @@ int main(int argc, char const *argv[])
 
 for (int i=k;i<nums;++i)
 {
-	dpd[vec[i].x][vec[i].y]=1;
+	dpd[vec[i].y][vec[i].x]=1;
 	cout<<vec[i].x<<" "<<vec[i].y<<endl;
 
 }
 
 
-	for(int i=0;i<m;i++)
-		{for (int j=0;j<n;j++)
+	for(int i=0;i<n;i++)
+		{for (int j=0;j<m;j++)
 		{
 			if(dpd[i][j]==1)
-				cout<<dpd[i][j]<<" ";
-			else cout<<"  ";
+				cout<<dpd[i][j];
+			else cout<<0;
 		}
 		cout<<endl;
 	}
