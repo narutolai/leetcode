@@ -20,13 +20,18 @@ class Solution
 {
 public:
 	vector<string> result;
-	bool isValid(string &s)
+	// 主要是这个函数flag为1时用来判断 最终字符是否合法，为0时用来剪枝。
+	bool isValid(string &s, int size, int flag)
 	{
 		int left = 0;
 		for (auto &c : s)
 		{
 			if (c == '(')
+			{
 				left++;
+				if (left > size / 2)
+					return false;
+			}
 			else
 			{
 				left--;
@@ -34,27 +39,38 @@ public:
 					return false;
 			}
 		}
-		return left == 0;
+		if (flag)
+		{
+			return left == 0;
+		}
+		else
+		{
+			return true;
+		}
 	}
-
-	void dfs(string &s, int n)
+	void dfs(string &s, int n, int size)
 	{
 		if (n == 0)
 		{
-			if (isValid(s))
+			if (isValid(s, size, 1)) //flag为1用来判断是否符合条件
 				result.push_back(s);
 			return;
 		}
-		s += "(";
-		dfs(s, n - 1);
-		s.erase(s.size() - 1, 1);
-		s += ")";
-		dfs(s, n - 1);
-		s.erase(s.size() - 1, 1);
+		if (isValid(s, size, 0)) //这里flag为0用来减枝
+		{
+			s += "(";
+			dfs(s, n - 1, size);
+			s.erase(s.size() - 1, 1);
+
+			s += ")";
+			dfs(s, n - 1, size);
+			s.erase(s.size() - 1, 1);
+		}
 	}
 	vector<string> generateParenthesis(int n)
 	{
 		string s;
-		dfs(s, 2 * n);
+		dfs(s, 2 * n, 2 * n);
+        	return result;
 	}
 };
