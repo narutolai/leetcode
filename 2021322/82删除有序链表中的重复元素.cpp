@@ -43,3 +43,23 @@ public:
         return head;
     }
 };
+
+这里贴下递归的
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (!head || !head->next) {
+            return head;
+        }
+        if (head->val != head->next->val) {
+            head->next = deleteDuplicates(head->next);
+        } else {
+            ListNode* move = head->next;
+            while (move && head->val == move->val) {
+                move = move->next;
+            }
+            return deleteDuplicates(move);
+        }
+        return head;
+    }
+};
