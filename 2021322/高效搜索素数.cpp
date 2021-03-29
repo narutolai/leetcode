@@ -18,3 +18,22 @@ public:
 };
 
 为什么j要从i*i开始呢， 因为 i*（i-1） 会被 j=i-1的时候 给计算掉的，
+
+class Solution
+{
+public:
+    int countPrimes(int n)
+    {
+        vector<bool> isPrime(n, true);
+        for (int i = 2; i * i < n; i++)
+            if (isPrime[i])
+                for (int j = i * i; j < n; j += i)
+                    isPrime[j] = false;
+
+        int count = 0;
+        for (int i = 2; i < n; i++)
+            if (isPrime[i])
+                count++;
+        return count;
+    }
+};
