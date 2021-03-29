@@ -36,6 +36,7 @@ public:
         //  如果k =2     4 5 1 2 3   那么链表最终尾部节点就是3   
         int offset = count - k % count - 1;
         //计算出偏移量后确定尾节点
+        //当然这里为了得出尾节点，使用快慢指针也是可行的
         cur = head;
         while (offset)
         {
