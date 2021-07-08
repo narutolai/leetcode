@@ -37,3 +37,35 @@ public:
         return count;
     }
 };
+
+//这个通过了 两数之和的变种
+class Solution
+{
+public:
+    set<uint32_t> candidate={1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576,2097152};
+
+    //两数之和的变种
+    int countPairs(vector<int> &deliciousness)
+    {
+
+        int MOD = 7 + 1e9;
+        int count = 0;
+
+        map<int, int> map_t;
+        //遍历所有的num
+         //遍历所有的num
+        for (auto num : deliciousness)
+        {
+            for(auto item:candidate)
+            {   
+                if(item>=num&&map_t[item-num])
+                {
+                    count+=map_t[item-num];
+                    count%=MOD;
+                }
+            }
+            map_t[num]++;
+        }
+        return count;
+    }
+};
