@@ -31,7 +31,7 @@ public:
                j++;
            }
            else{j++;}
-           //当判断到最后一个的时候，
+           //当判断到最后一个的时候，i=s.size() j=s.size(), j也可能小于s.size();
            if(i==s.size()&&j<=t.size()) 
            return true;
        }
