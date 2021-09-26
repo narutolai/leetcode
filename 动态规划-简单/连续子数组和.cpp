@@ -25,6 +25,7 @@ class Solution {
 public:
     bool checkSubarraySum(vector<int>& nums, int k) {
             unordered_map<int,int> map_;
+            //初始时刻，余数为0的时候，把其坐标-1也存进去，其实就是0的左边
             map_[0]=-1;
             int sum=0;
             //i位置处的余数，不过是余数对应i下标
