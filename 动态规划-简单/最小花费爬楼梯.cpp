@@ -34,3 +34,20 @@ public:
     }
 };
 //这道题目有问题啊，数组最后边要加上一个0 这题目有问题真的。。。。
+class Solution {
+public:
+    int minCostClimbingStairs(vector<int>& cost) {
+        //这里在尾部压入0
+        cost.push_back(0);
+        int n=cost.size();
+        vector<int> dp(n,0);
+        dp[0]=cost[0];
+        dp[1]=cost[1];
+        for(int i=2;i<n;i++)
+        dp[i]=min(dp[i-1],dp[i-2])+cost[i];
+        //           [0,1,2,3]
+        //我知道为什么[10,15,20,0]是15了直接从15 蹦到楼顶啊 没错  没毛病
+        //然后这里就可以直接返回dp[n-1]了
+        return dp[n-1];
+    }
+};
