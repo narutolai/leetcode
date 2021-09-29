@@ -40,14 +40,14 @@ public:
              for(int j=i;j>=0;j--)
             { 
                 maxvalue=max(maxvalue,arr[j]);
-                max_[j][i]=maxvalue;
+                max_[i][j]=maxvalue;
             }
          }
          vector<vector<int>> dp(n,vector<int>(n,0));
          for(int i=0;i<n;i++)
          for(int j=i;j>=0;j--)
          {  int min_=INT_MAX;
-                for(int k=j;k+1<=i;k++)
+                for(int k=j;k<i;k++)
               {  min_=min(min_,dp[j][k]+dp[k+1][i]+max_[j][k]*max_[k+1][i]);
                 dp[j][i]=min_;
               }
