@@ -32,7 +32,7 @@ public:
           else
             dp[i][j]=i-1<0?false:(p[j-1]=='.'||p[j-1]==s[i-1])&&dp[i-1][j-1];
        } 
-    return dp[size][psize];
+       return dp[size][psize];
     }
 };
 
