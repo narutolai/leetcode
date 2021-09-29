@@ -28,8 +28,8 @@ public:
         vector<int>dp(n+1);
         dp[1]=0;
         for(int i=2;i<=n;i++)
-            if(max_(i)==1) dp[i]=i;//如果一个数是质数，那所需操作数就是它本身
-            else dp[i]=dp[max_(i)]+i/max_(i);//如果是 8 那就要dp[4]+复制2次
-        return dp[n];                       //如果是9那就是dp[3]复制3次
+            if(max_(i)==1) dp[i]=i;//如果一个数是质数，那所需操作数就是它本身 就拷贝原有的一个A然后一直粘贴i-1次，总操作是i次
+            else dp[i]=dp[max_(i)]+i/max_(i);//如果是 8 那就要dp[4]+拷贝一次+复制一次 一共是 dp[4]+2次
+        return dp[n];                       //如果是9那就是dp[3] 拷贝一次 +复制二次 一共是 dp[4]+3次
     }
 };
