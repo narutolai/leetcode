@@ -28,7 +28,7 @@ public:
          sort(rbegin(m),rend(m)); //为了降序排序
          int pre_size=ans.size();
          for(auto &[cnt,c]:m)
-         {  //如果该字母剩余数量为0或者出现了aa形状，就跳过
+         {  //如果该字母剩余数量为0或者该字符与字符串ans的最后两个字符相等，就不能再添加该字母了 不然会出现3个重复的字符
              if(cnt==0||ans.size()>=2&&c==ans.back()&&c==ans[ans.size()-2])continue;
              ans+=c;
              cnt--;
