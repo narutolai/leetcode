@@ -1,40 +1,45 @@
-给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。
+// 给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。
 
-注意:
+// 注意:
 
-每个数组中的元素不会超过 100
-数组的大小不会超过 200
-示例 1:
+// 每个数组中的元素不会超过 100
+// 数组的大小不会超过 200
+// 示例 1:
 
-输入: [1, 5, 11, 5]
+// 输入: [1, 5, 11, 5]
 
-输出: true
+// 输出: true
 
-解释: 数组可以分割成 [1, 5, 5] 和 [11].
+// 解释: 数组可以分割成 [1, 5, 5] 和 [11].
 
 //就是说数组中某些元素的累加和是否可以到达一半，索引从0开始 深度优先搜索
 
 //递归--->带备忘录的递归--->动态规划
-class Solution {
+class Solution
+{
 public:
-    bool dfs(int target,vector<int>& nums,int j)
+    bool dfs(int target, vector<int> &nums, int j)
     {
-        if(target==0)return true;
-        if(j==nums.size()) return false; //遍历完所有项目
-        if(target<0) return false;       
-        return dfs(target-nums[j],nums,j+1)||dfs(target,nums,j+1);//减或不减跳过j项
+        if (target == 0)
+            return true;
+        if (j == nums.size())
+            return false; //遍历完所有项目
+        if (target < 0)
+            return false;
+        return dfs(target - nums[j], nums, j + 1) || dfs(target, nums, j + 1); //减或不减跳过j项
     }
-    bool canPartition(vector<int>& nums) {
-        int sum=accumulate(nums.begin(),nums.end(),0);//数组总和
-         sort(nums.rbegin(),nums.rend());              //数组排序
-         int target=sum/2;                              
-         if(sum%2==1)
-             return false;
-         if(nums[0]>target)
-             return false;
-         if(nums[0]==target)
-             return true;
-         return dfs(target,nums,0);
+    bool canPartition(vector<int> &nums)
+    {
+        int sum = accumulate(nums.begin(), nums.end(), 0); //数组总和
+        sort(nums.rbegin(), nums.rend());                  //数组排序
+        int target = sum / 2;
+        if (sum % 2 == 1)
+            return false;
+        if (nums[0] > target)
+            return false;
+        if (nums[0] == target)
+            return true;
+        return dfs(target, nums, 0);
     }
 };
 //动态规划的解法 0-1背包问题
@@ -54,19 +59,25 @@ public:
 11  T                      T        dp[11]=dp[11]||dp[11-11]=dp[0]=true
 5   T                      T        dp[11]=dp[11]||dp[11-5]=dp[6]=true
 */
-class Solution {
+class Solution
+{
 public:
-    bool canPartition(vector<int>& nums) {
-        int sum=accumulate(nums.begin(),nums.end(),0);//数组总和
-        int target=sum/2;                              
-        if(sum%2==1)return false;
-        if(nums[0]>target)return false;
-        
-        vector<int> dp(target+1,false);
-        dp[0]=true;
-        for(int i=0;i<nums.size();i++)
-        for(int j=target;j>=nums[i];j--)
-            dp[j]=dp[j]||dp[j-nums[i]];
-            return dp[target];
+    bool canPartition(vector<int> &nums)
+    {
+        int sum = accumulate(nums.begin(), nums.end(), 0); //数组总和
+        int target = sum / 2;
+        if (sum % 2 == 1)
+            return false;
+        if (nums[0] > target)
+            return false;
+
+        vector<int> dp(target + 1, false);
+        dp[0] = true;
+
+        //是否可以凑出11，
+        for (int i = 0; i < nums.size(); i++)
+            for (int j = target; j >= nums[i]; j--)
+                dp[j] = dp[j] || dp[j - nums[i]];
+        return dp[target];
     }
 };
