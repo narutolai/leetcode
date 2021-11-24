@@ -7,15 +7,18 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    TreeNode* mirrorTree(TreeNode* root) {
-        if(!root)return NULL;
-        
-        TreeNode* temp=root->right;
-        root->right=root->left;
-        root->left=temp;
-        
+    TreeNode *mirrorTree(TreeNode *root)
+    {
+        if (!root)
+            return NULL;
+
+        TreeNode *temp = root->right;
+        root->right = root->left;
+        root->left = temp;
+
         mirrorTree(root->left);
         mirrorTree(root->right);
         return root;

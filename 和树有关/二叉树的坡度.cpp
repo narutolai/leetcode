@@ -14,22 +14,25 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+class Solution
+{
     int sum; //后序遍历
 public:
-
-    int depth(TreeNode*root){
-        if(root==NULL) return 0;
-        int leftsum=depth(root->left);
-        int rightsum=depth(root->right);
+    int depth(TreeNode *root)
+    {
+        if (root == NULL)
+            return 0;
+        int leftsum = depth(root->left);
+        int rightsum = depth(root->right);
         //节点要做什么：要累加坡度
-        sum+=leftsum>rightsum?leftsum-rightsum:rightsum-leftsum;
+        sum += leftsum > rightsum ? leftsum - rightsum : rightsum - leftsum;
         //此节点返回什么，返回节点之和
-        return root->val+leftsum+rightsum;
+        return root->val + leftsum + rightsum;
     }
-    int findTilt(TreeNode* root) {
-        sum=0;
-        depth(root);   
+    int findTilt(TreeNode *root)
+    {
+        sum = 0;
+        depth(root);
         return sum;
     }
 };

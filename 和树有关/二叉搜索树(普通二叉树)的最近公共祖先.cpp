@@ -16,41 +16,74 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root == NULL)
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
+    {
+        if (root == NULL)
             return NULL;
-        if(root->val > p->val && root->val > q->val)//说明p，q都在左子树
+        if (root->val > p->val && root->val > q->val) //说明p，q都在左子树
             return lowestCommonAncestor(root->left, p, q);
-        else if(root->val < p->val && root->val < q->val)//说明p，q都在右子树
+        else if (root->val < p->val && root->val < q->val) //说明p，q都在右子树
             return lowestCommonAncestor(root->right, p, q);
-        else//p，q各在一边，说明当前的根就是最近共同祖先
-            return root; 
+        else //p，q各在一边，说明当前的根就是最近共同祖先
+            return root;
     }
 };
 
 //普通二叉树 其实就是个后序遍历吧
-class Solution {
-public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(root == NULL)
+class Solution
+{
+public: //其实就是在二叉树里找一个节点。
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
+    {
+        if (root == NULL)
             return NULL;
         //如果根节点就是p或者q，返回根节点
-        if(root == p || root == q)
+        if (root == p || root == q)
             return root;
         //分别去左右子树里面找
-        TreeNode* left = lowestCommonAncestor(root->left, p, q);
-        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        TreeNode *left = lowestCommonAncestor(root->left, p, q);
+        TreeNode *right = lowestCommonAncestor(root->right, p, q);
 
-        if(left && right)//p，q各在一边，说明当前的根就是最近共同祖先 
+        if (left && right) //p，q各在一边，说明当前的根就是最近共同祖先
             return root;
-        else if(left)//说明p，q都在左子树
+        else if (left) //说明p，q都在左子树
             return left;
-        else if(right)//说明p，q都在右子树
+        else if (right) //说明p，q都在右子树
             return right;
         else
             return NULL;
-        
     }
+};
+//在普通二叉树中找一个节点
+class Solution
+{
+public: //其实就是在二叉树里找一个节点。
+int count ;
+    TreeNode *find(TreeNode *root, int val)
+    {
+        if (flag) //减枝函数 ，减少递归函数栈的调用。有时搜索到了解就可以返回了，其他的遍历也可以停止了，
+            return root;
+
+        if (root == nullptr)
+            return nullptr;
+
+        if (root->all == val)
+        {
+            flag = true;
+            return root;
+        }
+        TreeNode *leftfind = find(root->left, p);
+        TreeNode *rightfind = find(root->right, p);
+
+        if (leftfind)
+            return leftfind; //非
+        if (rightfind)
+            return rightfind;
+
+        return nullptr; //我竟然在质疑要不要这个返回值。
+    }
+    //当然你也可以写一个没有返回值的二叉树遍历 设置一个全局标志了。
 };

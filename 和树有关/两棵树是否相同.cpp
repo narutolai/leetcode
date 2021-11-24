@@ -7,11 +7,15 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    bool isSameTree(TreeNode* p, TreeNode* q) {
-        if(p==NULL&&q==NULL)return true; //都为空为true
-        if(p==NULL||q==NULL) return false;//
-        return (p->val==q->val)&&isSameTree(p->left,q->left)&&isSameTree(p->right,q->right);
+    bool isSameTree(TreeNode *p, TreeNode *q)
+    {
+        if (p == NULL && q == NULL)
+            return true; //都为空为true
+        if (p == NULL || q == NULL)
+            return false; //
+        return (p->val == q->val) && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
     }
 };

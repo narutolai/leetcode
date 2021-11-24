@@ -9,21 +9,22 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-class Solution {
+class Solution
+{
     int res;
 public:
-    void preorder(TreeNode *root,int l,int r)
+    void preorder(TreeNode *root, int l, int r)
     {
-        if(!root) return;
-        if(r>=root->val&&root->val>=l)  //判断是否在范围内
-            res+=root->val;
-        preorder(root->left,l,r);
-        preorder(root->right,l,r);
+        if (!root)
+            return;
+        if (r >= root->val && root->val >= l) //判断是否在范围内
+            res += root->val;
+        preorder(root->left, l, r);
+        preorder(root->right, l, r);
     }
-    int rangeSumBST(TreeNode* root, int L, int R) {
-            preorder(root,L,R);
-            return res;
-
-
+    int rangeSumBST(TreeNode *root, int L, int R)
+    {
+        preorder(root, L, R);
+        return res;
     }
 };
