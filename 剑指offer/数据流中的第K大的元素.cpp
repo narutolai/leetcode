@@ -1,6 +1,3 @@
-//关于topK问题的详细解答
-https://mp.weixin.qq.com/s/FFsvWXiaZK96PtUg-mmtEw
-//堆排序代码
 
 class MyHeap
 {
@@ -12,7 +9,6 @@ public:
         int size = nums.size();
         for (int i = nums.size() / 2; i >= 0; i--)
         {
-
             adjustheap(nums, i, size - 1);
         }
         //然后调整堆
@@ -69,15 +65,14 @@ public:
         nums[st_index] = temp;
     }
 
-    KthLargest(int k, vector<int> &numsout):k(k)
+    KthLargest(int k, vector<int> &numsout) : k(k)
     {
-        
+
         for (int i = 0; i < k; i++)
             nums.push_back(-10000);
 
         for (int j = 0; j < numsout.size(); j++)
         {
-           
             add(numsout[j]);
         }
     }

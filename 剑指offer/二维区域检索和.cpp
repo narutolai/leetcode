@@ -1,7 +1,9 @@
 class NumMatrix
 {
     vector<vector<int>> presums;
+
 public:
+    //在构造函数中根据参数构造好presujm
     NumMatrix(vector<vector<int>> &matrix)
     {
         int m = matrix.size();
@@ -15,8 +17,10 @@ public:
             for (int i = 0; i < m; i++)
                 for (int j = 0; j < n; j++)
                 {
-
-                    presums[i][j] = (i - 1 < 0 ? 0 : presums[i - 1][j]) + (j - 1 < 0 ? 0 : presums[i][j - 1]) - ((i - 1 < 0 || j - 1 < 0) ? 0 : presums[i - 1][j - 1]) + matrix[i][j];
+                    presums[i][j] = (i - 1 < 0 ? 0 : presums[i - 1][j]) 
+                    + (j - 1 < 0 ? 0 : presums[i][j - 1]) 
+                    - ((i - 1 < 0 || j - 1 < 0) ? 0 : presums[i - 1][j - 1]) 
+                    + matrix[i][j];
                 }
         }
     }
