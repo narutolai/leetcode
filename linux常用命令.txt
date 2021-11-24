@@ -1,0 +1,8 @@
+netstat  -anp  |grep   端口号 
+查看端口号是否被占用
+
+
+netstat   -nultp（此处不用加端口号）
+该命令是查看当前所有已经使用的端口情况
+
+https://zhuanlan.zhihu.com/p/30383450 还有很多
