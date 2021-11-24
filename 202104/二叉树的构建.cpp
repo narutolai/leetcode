@@ -8,23 +8,6 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-//这也太吃饱了没事干了吧
-void creatTree(TreeNode **root)
-{
-    int a;
-    cin >> a;
-    if (a != -1)
-        (*root)->val = a;
-    else
-    {
-        *root=nullptr;
-        return;
-    }
-    (*root)->left = new TreeNode();
-    creatTree(&((*root)->left));
-    (*root)->right = new TreeNode();
-    creatTree(&((*root)->right));
-}
 //这个是最简单的方法了。 多么完美的代码。
 TreeNode* createtree(TreeNode *root)
 {   
@@ -38,7 +21,8 @@ TreeNode* createtree(TreeNode *root)
     }
     return root;
 }
-//三种遍历方式的栈实现
+
+//二叉树三种遍历方式的栈实现
 void preorder_stack(TreeNode *root)
 {
     stack<TreeNode *> stk;
@@ -77,10 +61,11 @@ void indorder_stack(TreeNode *root)
         }
         else
         {
-            cur = nullptr;
+            cur = nullptr;//这个太关键了 不然会死循环的我靠
         }
     }
 }
+
 void postorder_stack(TreeNode *root)
 {
     TreeNode *cur = root;
@@ -93,15 +78,17 @@ void postorder_stack(TreeNode *root)
             cur = cur->left;
         }
         cur = stk.top();
-        cout << cur->val << endl;
         stk.pop();
+        cout << cur->val << endl;
+        
+        //如果当前元素是栈顶的左节点  就跳到右节点去。
         if (!stk.empty() && cur == stk.top()->left)
         {
             cur = stk.top()->right;
         }
         else
         {
-            cur = nullptr;
+            cur = nullptr; //这句太关键了啊。
         }
     }
 }
