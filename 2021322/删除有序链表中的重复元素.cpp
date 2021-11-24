@@ -1,4 +1,4 @@
-删除有序链表中的重复元素，使得其只出现一次
+//删除有序链表中的重复元素，使得其只出现一次
 
 /**
  * Definition for singly-linked list.
@@ -10,15 +10,17 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-class Solution {
+class Solution
+{
 public:
-    ListNode* deleteDuplicates(ListNode* head) {
+    ListNode *deleteDuplicates(ListNode *head)
+    {
         ListNode *cur = head;
         ListNode *pre = nullptr;
-        head=nullptr;
+        head = nullptr;
         while (cur != nullptr)
         {
-            if (pre==nullptr?1:pre->val!=cur->val)
+            if (pre == nullptr ? 1 : pre->val != cur->val)
             {
                 if (pre == nullptr)
                 {
@@ -33,8 +35,8 @@ public:
             }
             cur = cur->next;
         }
-        if(pre!=nullptr)
-            pre->next=nullptr;
+        if (pre != nullptr)
+            pre->next = nullptr;
         return head;
     }
 };

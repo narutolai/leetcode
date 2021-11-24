@@ -1,4 +1,4 @@
-给的一个数组 要求  整个数组是山脉状，不能有相等的， 要求有且只有一个驼峰。
+//给的一个数组 要求  整个数组是山脉状，不能有相等的， 要求有且只有一个驼峰。
 
 class Solution
 {
@@ -54,6 +54,7 @@ public:
             i++;
         if (i == j)
             return false;
+            
         while (j >= 1 && arr[j - 1] > arr[j])
             j--;
         return i == j && i != 0;
