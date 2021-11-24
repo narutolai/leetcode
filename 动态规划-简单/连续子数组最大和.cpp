@@ -16,18 +16,19 @@
 空间复杂度可以降至O(1)
 */
 
-class Solution {
+class Solution
+{
 public:
-    int maxSubArray(vector<int>& nums) {
+    int maxSubArray(vector<int> &nums)
+    {
         //这个必须是连续的
-        int maxnum=nums[0];
-        for(int i=1;i<nums.size();i++)
+        int maxnum = nums[0];
+        for (int i = 1; i < nums.size(); i++)
         {
-                //前一个数大于0就修改否则就不要修改这个数
-                if(nums[i-1]>0)
-                nums[i]+=nums[i-1];
-            maxnum=max(maxnum,nums[i]);
-            
+            //前一个数大于0就修改否则就不要修改这个数
+            if (nums[i - 1] > 0)
+                nums[i] += nums[i - 1];
+            maxnum = max(maxnum, nums[i]);
         }
         return maxnum;
     }
