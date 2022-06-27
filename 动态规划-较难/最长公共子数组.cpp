@@ -29,14 +29,14 @@ public:
                 if (A[i] == B[j])
                 {
                     dp[i][j] = ((i - 1 < 0 || j - 1 < 0) ? 0 : dp[i - 1][j - 1]) + 1;
-                    //len = max(len, dp[i][j]);
+                    // len = max(len, dp[i][j]);
                 }
                 else
                 {
                     dp[i][j] = max(i - 1 < 0 ? 0 : dp[i - 1][j], j - 1 < 0 ?: dp[i][j - 1]);
                 }
             }
-        //return len;
-        return dp[m-1][n-1];
+        // return len;
+        return dp[m - 1][n - 1];
     }
 };

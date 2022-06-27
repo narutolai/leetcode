@@ -24,22 +24,23 @@ public:
     {
         int m = t.size();
         int n = s.size();
+        // dp[i][j]的意思是s[0~i]内t[0~j]出现的次数
         vector<vector<long>> dp(m + 1, vector<long>(n + 1));
         for (int i = 0; i <= n; i++)
             dp[0][i] = 1;
         for (int i = 1; i <= m; i++)
             dp[i][0] = 0;
-        
 
         //想出这个dp很重要真的，，，然后就是初始化的注意
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= n; j++)
             {
                 if (t[i - 1] == s[j - 1])
-                    dp[i][j] = dp[i - 1][j - 1] + dp[i][j - 1];
+                    dp[i][j] = dp[i][j - 1] + dp[i - 1][j - 1];
                 else
                     dp[i][j] = dp[i][j - 1];
             }
         return dp[m][n];
     }
 };
+//遍历次数 1

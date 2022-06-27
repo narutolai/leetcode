@@ -48,6 +48,7 @@ vector<vector<int>> Arrangement(int m)
     for (auto &vec : pre)
     {
         int i = 0;
+  
         while (i != m)
         {     
             iter = vec.insert(vec.begin() + i, m);//迭代器的作用就出现了。。。。分别在不同的位置插入元素m

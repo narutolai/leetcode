@@ -12,7 +12,7 @@ int binarySearch(vector<int> &nums, int target)
       return mid;
   }
   return -1;
-}
+}  
 
 //  2 3 4   5
 int leftbound(vector<int> &nums, int target)

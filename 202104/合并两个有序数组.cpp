@@ -28,11 +28,11 @@ public:
             }
             else
             {
-                int a = m + k;
-                while (a > i) //就是要把i开始到最后的几个数整体往后移动 backward_copy()相当于是
+                int lastindex = m + k;
+                while (lastindex > i) //就是要把i开始到最后的几个数整体往后移动 backward_copy()相当于是
                 {
-                    nums1[a] = nums1[a - 1];
-                    a--;
+                    nums1[lastindex] = nums1[lastindex - 1];
+                    lastindex--;
                 }
                 nums1[i] = nums2[j];
 

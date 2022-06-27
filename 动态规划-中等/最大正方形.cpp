@@ -38,3 +38,4 @@ public:
         return maxlength * maxlength;
     }
 };
+//遍历次数1

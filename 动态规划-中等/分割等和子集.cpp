@@ -81,3 +81,5 @@ public:
         return dp[target];
     }
 };
+//不就是找一些硬币凑出一个数
+//可以凑出

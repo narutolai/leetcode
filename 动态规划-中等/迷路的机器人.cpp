@@ -52,6 +52,14 @@ public: //动态规划了
         backtrace(obstacleGrid,x+1,y,visited,buffer);  //向下边
         buffer.pop_back();
 
+        //这里只有两种情况 写成for循环就是
+        for( 向下 或 向右 )
+        {
+            push_back()
+            backtrace();//限制条件写在开头
+            pop_back();
+        }
+
     }
     vector<vector<int>> pathWithObstacles(vector<vector<int>>& obstacleGrid) {
     

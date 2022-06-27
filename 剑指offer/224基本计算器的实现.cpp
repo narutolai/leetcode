@@ -27,6 +27,7 @@ public:
 				num = calculate(s);
 			}
 			//是符号 或者 最后一个元素
+			//if(c =='+'|| c=='-' || c=='*' || c=='\'|| index == s.size()) 这样是不是更快 就不用再调用isdigit()函数了。
 			if (!isdigit(c) && c != ' ' || index == s.size()) //应该是erase()函数太费时间了
 			{
 				switch (sign)
@@ -53,9 +54,10 @@ public:
 				sign = c;
 				num = 0;
 			}
+			
 			if (c == ')')
 				break;
-		}
+		}//循环结束 累加栈中的元素值
 		int result = 0;
 		while (!stk.empty())
 		{
@@ -65,3 +67,4 @@ public:
 		return result;
 	}
 };
+//遍历次数+1

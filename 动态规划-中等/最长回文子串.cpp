@@ -1,6 +1,4 @@
 //首先给出java版本的中心算法
-class Solution
-{
 public:
   class Solution
 {
@@ -37,7 +35,7 @@ public: //解码总数 我靠 这玩意儿有问题啊
         return right - left - 1;
     }
 };
-}
+
 //然后下面是c++的动态规划版本的
 class Solution
 {

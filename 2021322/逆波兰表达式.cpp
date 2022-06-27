@@ -15,7 +15,7 @@
 // 输入：tokens = ["2","1","+","3","*"]
 // 输出：9
 // 解释：该算式转化为常见的中缀算术表达式为：((2 + 1) * 3) = 9
-  
+
 class Solution
 {
 public:
@@ -24,16 +24,17 @@ public:
         stack<int> st;
         for (auto &it : tokens)
         {
+            //是通过最后一个字符来判断是不是数字
             if (it.back() >= '0' && it.back() <= '9')
             {
-                st.push(atoi(it.c_str()));
+                st.push(atoi(it.c_str()));//字符串转整形。
             }
             else
             {
-                int  m = st.top();
-                    st.pop();
-                 int   n = st.top();
-                    st.pop();
+                int m = st.top();
+                st.pop();
+                int n = st.top();
+                st.pop();
                 switch (*it.c_str()) //这里返回的是一个指针，指向字符，所以只能取内容了
                 {
                 case '+':
@@ -64,3 +65,4 @@ public:
         return st.top();
     }
 };
+//牛 牛 牛

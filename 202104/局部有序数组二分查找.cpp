@@ -20,104 +20,53 @@
 
 // 输入：nums = [1], target = 0
 // 输出：-1
+#include <vector>
+#include <iostream>
+using namespace std;
 class Solution
 {
 public:
     int search(vector<int> &nums, int target)
     {
-        int n = (int)nums.size();
-        if (!n)
+        int left = 0, right = nums.size() - 1;
+        while (left <= right)
         {
-            return -1;
-        }
-        if (n == 1)
-        {
-            return nums[0] == target ? 0 : -1;
-        }
-        int l = 0, r = n - 1;
-        while (l <= r)
-        {
-            int mid = (l + r) / 2;
+            int mid = left + (right - left) / 2;
             if (nums[mid] == target)
+            {
                 return mid;
-            if (nums[0] <= nums[mid]) //找到有序的那一部分再说。就在有序的那一部分里找
-            {                         //局部有序也是可行的
-                if (nums[0] <= target && target < nums[mid])
+            }
+            //带重复数字
+            if (nums[left] == nums[mid] && nums[mid] == nums[right])
+            {
+                ++left;
+                --right;
+            }
+            if (nums[left] <= nums[mid])
+            {
+                if (nums[left] <= target && target < nums[mid])
                 {
-                    r = mid - 1;
+                    right = mid - 1;
                 }
                 else
                 {
-                    l = mid + 1;
+                    left = mid + 1;
                 }
             }
             else
             {
-                if (nums[mid] < target && target <= nums[n - 1])
+                if (nums[mid] < target && target <= nums[right])
                 {
-                    l = mid + 1;
+                    left = mid + 1;
                 }
                 else
                 {
-                    r = mid - 1;
+                    right = mid - 1;
                 }
             }
         }
         return -1;
     }
 };
-
-//带重复数字
-class Solution
-{
-public:
-    bool search(vector<int> &nums, int target)
-    {
-        int n = nums.size();
-        if (n == 0)
-        {
-            return false;
-        }
-        if (n == 1)
-        {
-            return nums[0] == target;
-        }
-        int l = 0, r = n - 1;
-        while (l <= r)
-        {
-            int mid = (l + r) / 2;
-            if (nums[mid] == target)
-            {
-                return true;
-            }
-            if (nums[l] == nums[mid] && nums[mid] == nums[r])
-            {
-                ++l;
-                --r;
-            }
-            else if (nums[l] <= nums[mid])
-            {
-                if (nums[l] <= target && target < nums[mid])
-                {
-                    r = mid - 1;
-                }
-                else
-                {
-                    l = mid + 1;
-                }
-            }
-            else
-            {
-                if (nums[mid] < target && target <= nums[n - 1])
-                {
-                    l = mid + 1;
-                }
-                else
-                {
-                    r = mid - 1;
-                }
-            }
-        }
-        return false;
-    }
-};
+//这个方法亲测可用 没什么问题的
+//遍历次数 1 

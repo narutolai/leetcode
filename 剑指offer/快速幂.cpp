@@ -19,3 +19,4 @@ public:
     return t > 0 ? res : 1.0 / res;
   }
 };
+//遍历次数 1  

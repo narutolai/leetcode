@@ -27,12 +27,12 @@ class Solution
 public:
     char leftof(char c)
     {
-        if (c == '(')
-            return ')';
-        else if (c == '[')
-            return ']';
-        else if (c == '{')
-            return '}';
+        if (c == ')')
+            return '(';
+        else if (c == ']')
+            return '[';
+        else if (c == '}')
+            return '{';
     }
     bool isValid(string s)
     {
@@ -40,41 +40,17 @@ public:
         stack<char> st;
         for (auto &cha : s)
         {
-            switch (cha)
+           if (cha == ')' || cha == '}' || cha== ']')
             {
-            case ')':
-                if (!st.empty() && st.top() == '(')
+                if(!st.empty() && st.top() == leftof(cha))
                 {
                     st.pop();
-                }
-                else
-                {
+                }else{
                     st.push(cha);
                 }
-                break;
-            case ']':
-                if (!st.empty() && st.top() == '[')
-                {
-                    st.pop();
-                }
-                else
-                {
-                    st.push(cha);
-                }
-                break;
-            case '}':
-                if (!st.empty() && st.top() == '{')
-                {
-                    st.pop();
-                }
-                else
-                {
-                    st.push(cha);
-                }
-                break;
-            default:
-                st.push(cha); //default中处理当前字符是左括号类型的话直接入栈。
-                break;
+            }
+            else{
+                st.push(cha);
             }
         }
         return st.empty();

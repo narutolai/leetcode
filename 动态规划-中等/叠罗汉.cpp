@@ -17,7 +17,7 @@ public:
         if (a[0] == b[0])
             return a[1] > b[1];
         else
-            return a[0] < b[0];
+            return a[0] < b[0];  
     }
     int bestSeqAtIndex(vector<int> &height, vector<int> &weight)
     {
@@ -25,6 +25,7 @@ public:
         vector<vector<int>> item(m, vector<int>(2, 0));
         for (int i = 0; i < m; i++)
             item[i] = {height[i], weight[i]};
+        //先排一个顺序 然后再按照最长上升子序列的方式来做       
         sort(item.begin(), item.end(), comp);
         vector<int> top(m);
         int piles = 0;
@@ -33,7 +34,7 @@ public:
         {
             int cur = item[i][1]; //当前牌值
             int left = 0, right = piles;
-            //这是在数组中查找一个元素的左侧边界的写法
+            //这是在数组中查找一个元素的左侧边界的写法 但是这个数不一定存在的啊
             while (left < right)
             {
                 int mid = (left + right) / 2;
@@ -42,22 +43,14 @@ public:
                 else if (top[mid] < cur)
                     left = mid + 1;
                 else
-                    right = mid;
+                    right = mid;//找左边界和找有边界无非就是相等的时候 是right=mid  还是left = mid + 1
             }
             //如果没有新起一堆牌
             if (left == piles)
                 piles++;
             top[left] = cur;
         }
-        //别这么找 会超时真的。用二分法找把
-        /*  for(int i=1;i<m;i++)
-        for(int j=0;j<i;j++)
-        if(item[i][1]>item[j][1])
-        {dp[i]=max(dp[i],dp[j]+1);
-        max_=max(dp[i],max_);
-        }
-        return max_;
-        */
         return piles;
     }
 };
+//遍历次数 1

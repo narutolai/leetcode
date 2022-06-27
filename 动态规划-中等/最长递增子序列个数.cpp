@@ -42,7 +42,7 @@ public:
             dp[i] = 1;
             for (int j = 0; j < i; j++)
             {
-                if (nums[i] > nums[j])
+                if (nums[i] > nums[j])//如果 num[i]>num[j] 
                 {
                     if (dp[j] + 1 > dp[i])
                     {
@@ -66,3 +66,4 @@ public:
         return result;
     }
 };
+//遍历次数 1

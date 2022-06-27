@@ -18,14 +18,15 @@ class Solution
 public:
     int lengthOfLastWord(string s)
     {
-        int i = 0;
         while (s.back() == ' ' && !s.empty())
             s.pop_back(); //弹出尾部的空格
+        int iLength  = 0;
         while (s.back() != ' ' && !s.empty())
         {
-            i++;
+            iLength++;
             s.pop_back();
         }
-        return i;
+        return iLength;
     }
 };
+//

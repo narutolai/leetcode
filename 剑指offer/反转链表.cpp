@@ -74,6 +74,7 @@ class Solution
 {
 public: //反转整个链表
     ListNode *successor;
+    //1-->2-->3-->4     倒数第2个调用栈
     ListNode *reverse(ListNode *head)
     {
         //如果到了最后一个节点 直接返回
@@ -156,3 +157,4 @@ public: //反转整个链表
         return cur;
     }
 };
+//遍历次数 1

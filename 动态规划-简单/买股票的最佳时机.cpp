@@ -12,15 +12,18 @@ public:
     {
         //状态转移方程很重要
         int dp_i_0 = 0, dp_i_1 = INT_MIN;
-
+        // 我记得富途出了这道题给我做，然后我还，其实只能交易一次，先买回来 再卖出去，其实就是找一个数组中两个数的最大差值。
+        //
         for (int i = 0; i < prices.size(); i++)
         {
             //当前的dp           上一个的dp
+            
             dp_i_0 = max(dp_i_0, dp_i_1 + prices[i]);
             dp_i_1 = max(dp_i_1, -prices[i]);
         }
         return dp_i_0;
     }
+    //这个交易次数不限的话，那就是所有插值的最大值呢。 
     int maxProfit(vector<int> &prices, int k = INT_MAX) //k=正无穷
     {
         //状态转移方程很重要

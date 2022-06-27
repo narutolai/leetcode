@@ -27,8 +27,4 @@ public:
         return maxlenght - 1;
     }
 };
-
-int main()
-{
-    return 0;
-}
+//遍历次数 1

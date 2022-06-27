@@ -58,5 +58,37 @@ private:
     int *count; //这个count一定是指向堆区的这样才能共享
     T *_ptr;
 };
-
+template<typename>
+class Weak_ptr
+{
+	public:
+		Weak_ptr(T* ptr=NULL ):mptr(ptr){}
+		Weak_ptr(const Weak_ptr<T>& rhs){
+			mptr = rhs.mptr;
+		}
+		Weak_ptr<T> &operator=(const Weak_ptr<T>& rhs)
+		{
+			if (this != &rhs)
+			{
+				mptr = rhs.mptr
+			}
+			return *this;
+		}
+		Weak_ptr<T> &operator=(const Shared_ptr<T>& rhs)
+		{
+			mptr = rhs.getPtr();
+			return *this;
+		}
+		~Weak_ptr(){};
+		T* operator->()
+		{
+			return mptr;
+		}
+		T& operator *()
+		{
+			return *mptr;
+		}
+	private:
+		T *mptr;
+};
 #endif

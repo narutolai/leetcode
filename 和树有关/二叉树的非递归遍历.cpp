@@ -12,7 +12,7 @@ void preorder_stack(TreeNode *root)
         if (cur)
         {
             cout << cur->val << endl;
-            stk.push(cur->right);
+            stk.push(cur->right);//没错 就是先右边 后左边
             stk.push(cur->left);
         }
     }
@@ -42,7 +42,7 @@ void indorder_stack(TreeNode *root)
         }
     }
 }
-//后序遍历 要使用两个栈
+//后序遍历 要使用两个栈 其实是一个栈就可以了 最后把res逆转一就 可以了
 vector<int> postorderTraversal(TreeNode *root)
 {
     stack<TreeNode *> st1;

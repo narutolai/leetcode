@@ -13,7 +13,7 @@ void quicksort(vector<int> &num, int left, int right)
         num[i] = num[j];
 
         while (i < j && num[i] <= pivot)
-            i++;
+            i++; 
         num[j] = num[i];
     }
     num[i] = pivot; //枢纽最终位置

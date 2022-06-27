@@ -43,7 +43,7 @@ public:
 // 前三种情况都不满足，说明匹配成功了一部分，我们需要继续递归匹配，所以先调用函数 dfs(rt\rightarrow left,head\rightarrow next)dfs(rt→left,head→next) ，
 // 其中 rt\rightarrow leftrt→left 表示该节点的左儿子节点， head\rightarrow nexthead→next 表示下一个链表节点，如果返回的结果是 \textit{false}false，说明没有找到相匹配的路径，需要继续在右子树中匹配，
 // 继续递归调用函数 dfs(rt\rightarrow right,head\rightarrow next)dfs(rt→right,head→next) 去找是否有相匹配的路径，
-// 其中 rt\rightarrow rightrt→right 表示该节点的右儿子节点， head\rightarrow nexthead→next 表示下一个链表节点。
+// 其中 rt\rightarrow rightrt→ri ght 表示该节点的右儿子节点， head\rightarrow nexthead→next 表示下一个链表节点。
 // 匹配函数确定了，剩下只要枚举即可，从根节点开始，如果当前节点匹配成功就直接返回 \textit{true}true ，否则继续找它的左儿子和右儿子是否满足，
 // 也就是代码中的 dfs(root,head) || isSubPath(head,root->left) || isSubPath(head,root->right) ，然后不断的递归调用。
 // 这样枚举所有节点去判断即能找出是否有一条与链表相匹配的路径

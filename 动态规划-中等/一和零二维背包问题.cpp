@@ -35,6 +35,7 @@ public: //二维0-1背包问题
     }
     int findMaxForm(vector<string> &strs, int m, int n)
     {
+        //是max就全部初始化为0 如果是求最小值 就初始化为1
         vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
         dp[0][0] = 0;
         for (auto s : strs)
@@ -49,3 +50,6 @@ public: //二维0-1背包问题
         return dp[m][n];
     }
 };
+
+//遍历次数
+//总之就是画出dp表 然后把这张dp表的 每一个位置的值

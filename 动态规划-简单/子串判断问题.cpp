@@ -18,23 +18,29 @@ s = "axc", t = "ahbgdc"
 返回 false.
 */
 //使用双指针来判断就行
-class Solution {
+class Solution
+{
 public:
-    bool isSubsequence(string s, string t) {
-       int i=0,j=0;
-       if(s.size()==0) return true;
-       while(j<t.size())
-       {
-           if(s[i]==t[j])
-           {
-               i++;
-               j++;
-           }
-           else{j++;}
-           //当判断到最后一个的时候，i=s.size() j=s.size(), j也可能小于s.size();
-           if(i==s.size()&&j<=t.size()) 
-           return true;
-       }
+    bool isSubsequence(string s, string t)
+    {
+        int i = 0, j = 0;
+        if (s.size() == 0)
+            return true;
+        while (j < t.size())
+        {
+            if (s[i] == t[j])
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                j++;
+            }
+            //当判断到最后一个的时候，i=s.size() j=s.size(), j也可能小于s.size();
+            if (i == s.size() && j <= t.size())
+                return true;
+        }
         return false;
-       }
+    }
 };

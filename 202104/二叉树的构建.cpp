@@ -9,15 +9,16 @@ struct TreeNode
 };
 
 //这个是最简单的方法了。 多么完美的代码。
-TreeNode* createtree(TreeNode *root)
-{   
+TreeNode *createtree(TreeNode *root)
+{
     int a;
-    cin>>a;
-    if(a!=-1)
-    {   root=new TreeNode();
-        root->val=a;
-        root->left=createtree(root->left);
-        root->right=createtree(root->right);
+    cin >> a;
+    if (a != -1)
+    {
+        root = new TreeNode();
+        root->val = a;
+        root->left = createtree(root->left);
+        root->right = createtree(root->right);
     }
     return root;
 }
@@ -32,7 +33,7 @@ void preorder_stack(TreeNode *root)
     {
         cur = stk.top();
         stk.pop();
-        if (cur)
+        if (cur)//弹出访问的时候压入其子节点，弹出一个 压入两个。
         {
             cout << cur->val << endl;
             stk.push(cur->right);
@@ -61,7 +62,7 @@ void indorder_stack(TreeNode *root)
         }
         else
         {
-            cur = nullptr;//这个太关键了 不然会死循环的我靠
+            cur = nullptr; //这个太关键了 不然会死循环的我靠
         }
     }
 }
@@ -80,7 +81,7 @@ void postorder_stack(TreeNode *root)
         cur = stk.top();
         stk.pop();
         cout << cur->val << endl;
-        
+
         //如果当前元素是栈顶的左节点  就跳到右节点去。
         if (!stk.empty() && cur == stk.top()->left)
         {
@@ -92,3 +93,4 @@ void postorder_stack(TreeNode *root)
         }
     }
 }
+//遍历次数 :1

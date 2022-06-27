@@ -41,5 +41,21 @@ public:
                 dp[i] = dp[i] + dp[i - ic] % mod;
             }
         return dp[n] % mod;
+
+        //另一种解法
+        for (int i = 0; i <= n++ i)
+            for (int coin : item)
+            {
+                if (i + coin <= n)
+                    dp[i + coin] += dp[i];
+            }
+            //比如我从 i = 0 开始计算
+            // 那么  0 + 1
+                    0 + 5
+                    0 + 10
+                    0 + 25   
     }
 };
+//这个和凑零钱是不是一样的啊 但不是最少硬币数 而是总共多少种凑法
+
+//假设价钱从低到高慢慢增加

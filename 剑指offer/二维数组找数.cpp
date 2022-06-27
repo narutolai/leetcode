@@ -58,7 +58,7 @@ public:
         }
         int rows = matrix.length, columns = matrix[0].length;
         int row = 0, column = columns - 1;
-
+        //从第0行开始 最后一列交叉点 那就是矩阵右上角那个点开始
         while (row < rows && column >= 0)
         {
             //右上角开始 其实从左下角开始也可以的
@@ -67,15 +67,16 @@ public:
             {
                 return true;
             }
-            else if (num > target)
+            else if (num > target) //如果目标数更小，那要往左1列
             {
                 column--;
             }
             else
             {
-                row++;
+                row++;  //否则往下一行，可以类比盛水容器吗
             }
         }
         return false;
     }
 }
+//遍历次数 1

@@ -22,9 +22,8 @@ public:
             sum += cur_sum;
             return;
         }
-        pre = cur_sum;
-        dfs(root->left, pre);
-        dfs(root->right, pre);
+        dfs(root->left, cur_sum);
+        dfs(root->right, cur_sum);
     }
     int sumRootToLeaf(TreeNode *root)
     {
@@ -32,3 +31,4 @@ public:
         return sum;
     }
 };
+//遍历次数1

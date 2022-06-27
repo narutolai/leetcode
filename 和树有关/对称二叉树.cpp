@@ -10,7 +10,7 @@
 class Solution
 {
 public:
-    //假装是判断两颗树
+    //假装是判断两颗树 每一个函数都做了自己该做的事情
     bool dfs(TreeNode *p1, TreeNode *p2)
     {
         if (p1 == NULL && p2 == NULL)
@@ -31,3 +31,4 @@ public:
         return dfs(root->left, root->right);
     }
 };
+//遍历次数 1 

@@ -11,6 +11,7 @@ public:
     int maxArea(vector<int> &height)
     {
         int l = 0, r = height.size() - 1;
+        int res = 0;
         while (l < r)
         {
             int area = min(height[l], height[r]) * (l - r);
@@ -25,5 +26,8 @@ public:
                 r--;
             }
         }
+        return res;
     }
 };
+//注意这道题要和直方图的水量(202104中,去年4月份竟然在写leetcode题哈哈)区分开来
+//遍历方式1

@@ -34,7 +34,7 @@ public:
         if (root->right && root->right->val == x)
         {
             parent1 = root, depth1 = h;
-            return;
+            return; 
         }
 
         if (root->left && root->left->val == y)
@@ -57,3 +57,4 @@ public:
         return (depth2 == depth1) && (parent1 != parent2);
     }
 };
+//

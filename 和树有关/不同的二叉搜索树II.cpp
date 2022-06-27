@@ -21,7 +21,7 @@
 //    2     1         2                 3
 
 /**
- * Definition for a binary tree node.
+ * Definition for a binary tree node. 
  * struct TreeNode {
  *     int val;
  *     TreeNode *left;
@@ -62,3 +62,4 @@ public:
         return dfs(1, n);
     }
 };
+//遍历次数 1

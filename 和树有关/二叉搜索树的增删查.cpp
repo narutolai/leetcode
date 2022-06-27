@@ -33,14 +33,14 @@ public:
     TreeNode *getMin(TreeNode *root)
     {
         while (root->left)
-        {
+        {   
             root = root->left;
         }
         return root;
     }
     TreeNode *deleteNode(TreeNode *root, int val)
     {
-        if (root == nullptr) //找不到 就没用了
+        if (root == nullptr) //找不到 就不需要删了
             return nullptr;
         else if (root->val == val)
         {

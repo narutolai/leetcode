@@ -32,3 +32,4 @@ public:
         return cur % mode;
     }
 };
+//遍历次数 1

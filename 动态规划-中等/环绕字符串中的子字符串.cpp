@@ -52,3 +52,5 @@ public:
         return accumulate(dp.begin(), dp.end(), 0);
     }
 };
+//能不能把这题理解为最长的连续递增
+//遍历次数 1

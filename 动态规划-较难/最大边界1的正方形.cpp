@@ -49,7 +49,8 @@ public:
         return size * size;
     }
 };
-
+//上面这道题是边界为1的正方形  边界的话 记录每一个位置向上 和向右连续1的最大个数
+//这个是全1的正方形 全1取三个值中的最小值
 class Solution
 {
 public:

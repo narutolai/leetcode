@@ -33,17 +33,17 @@ public:
         int left = 0;
         for (int i = 0; i < s.size(); i++)
         {
-            //当前窗口内各个字符的出现次数
+            //
             count[s[i]]++;
-            //当前窗口内最大出现次数
+            //
             maxcount = max(maxcount, count[s[i]]);
-            //如果最大出现次数加上
-            if (i - left + 1 > maxcount + k)
+            //
+            if (i - left + 1 > maxcount + k) 
             {
                 count[s[left]]--;
                 left++;
             }
-        }
+        }  
         return s.size() - left;
     }
 };

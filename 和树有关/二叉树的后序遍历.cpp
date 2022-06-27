@@ -7,7 +7,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
- //可以采N叉树的遍历方法只是改个就行了
+ //可以采用N叉树的遍历方法只是改个就行了 后续遍历使用两个栈 
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
@@ -20,6 +20,7 @@ public:
         {
             TreeNode *temp=st1.top();
             st1.pop();
+
             st2.push(temp);
 
             if(temp->left)
@@ -36,3 +37,4 @@ public:
         return res;
     }
 };
+//遍历次数 1

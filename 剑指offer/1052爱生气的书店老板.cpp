@@ -33,7 +33,7 @@ public:
             }
         }
 
-        //其实就是计算这个大小为K的滑动窗口内的最大值为多少。
+        //其实就是计算这个大小为X的滑动窗口内的最大值为多少。
         int result = 0, add = 0;
         for (int i = 0, j = 0; i < grumpy.size(); i++)
         {
@@ -47,3 +47,4 @@ public:
         return result + sum;
     }
 };
+//遍历次数 1

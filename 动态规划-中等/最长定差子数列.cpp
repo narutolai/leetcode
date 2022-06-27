@@ -25,7 +25,7 @@ public:
    //超时 为什么会和最长递增子序列想到一块，递增子序列 的差是不定的啊
    int longestSubsequence(vector<int> &arr, int difference)
    {
-      unordered_map<int, int> m;
+      unordered_map<int, int> m;//以
       int ans = 0;
       for (auto x : arr)
       {
@@ -35,3 +35,6 @@ public:
       return ans;
    }
 };
+//m[2] = m[2 - difference] + 1
+//m[3] = m[3 - dfference] + 1
+//真的的是有趣

@@ -27,12 +27,8 @@ public:
                     dp[i][j] = 0;
                 else
                 {
-                    if (i == 0 && j == 0)
-                        dp[i][j] = 1; //原点处
-                    else if (i == 0)
-                        dp[i][j] = dp[i][j - 1]; //第一行
-                    else if (j == 0)
-                        dp[i][j] = dp[i - 1][j]; //第一列
+                    if (i == 0 || j == 0)
+                        dp[i][j] = 1; //第一行和第一列都是1
                     else
                         dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; //其他位置
                 }
@@ -40,3 +36,6 @@ public:
         return dp.back().back();
     }
 };
+//之前有做过到达终点的最少步数
+//其实第一行和第一列都是1
+//现在是问总的路径数，就是一个要不要max的问题

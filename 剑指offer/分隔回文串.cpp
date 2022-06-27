@@ -44,7 +44,7 @@ public:
 			result.push_back(temp);
 			return;
 		}
-		for(int i=0;i<s.size();i++)
+		for(int i=0;i<s.size();i++)//典型的回溯
 		{
 			if(judge(s,i))
 			{
@@ -54,6 +54,7 @@ public:
 			}
 		}
 	}
+//遍历次数 1
 	vector<vector<string>> partition(string s)
 	{
 		vector<string> temp;

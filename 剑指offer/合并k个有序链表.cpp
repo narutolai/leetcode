@@ -87,6 +87,7 @@ public:
     {
         int val;
         ListNode *ptr;
+        //该结构体重载该函数即可
         bool operator<(const Status &rhs) const
         {
             return val > rhs.val;
@@ -100,7 +101,7 @@ public:
         for (auto node : lists)
         {
             if (node)
-                q.push({node->val, node});
+                q.push({node->val, node});//可以直接这样构造这个Status
         }
         ListNode head, *tail = &head;
         while (!q.empty())
@@ -115,3 +116,4 @@ public:
         return head.next;
     }
 };
+//遍历次数 1

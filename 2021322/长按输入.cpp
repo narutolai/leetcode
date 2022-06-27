@@ -24,45 +24,6 @@
 // 输出：true
 // 解释：长按名字中的字符并不是必要的。
 
-class Solution
-{
-public:
-    bool isLongPressedName(string name, string typed)
-    {
-        int i = 0, j = 0, k = 0, size = 0;
-        char pivot;
-        size = name.size() > typed.size() ? name.size() : typed.size();
-        while (k < size)
-        {
-            int co1 = 1;
-            pivot = name[i];
-            while (i < name.size() - 1 && name[i] == name[i + 1])
-            {
-                co1++;
-                i++;
-            }
-            if (i < name.size() - 1)
-                i++;
-
-            if (typed[j] != pivot)
-                return false;
-
-            int co2 = 1;
-            while (j < typed.size() - 1 && typed[j] == typed[j + 1])
-            {
-                co2++;
-                j++;
-            }
-            if (j < typed.size() - 1)
-                j++;
-
-            if (co1 > co2)
-                return false;
-            k++;
-        }
-        return true;
-    }
-};
 
 //这个方法比较好
 //根据题意能够分析得到：字符串 \textit{typed}typed 的每个字符，有且只有两种「用途」：
@@ -90,7 +51,7 @@ public:
         int i = 0, j = 0;
         while (j < typed.length())
         {
-            if (i < name.length() && name[i] == typed[j])
+            if (i < name.length() && name[i] == typed[j])//如果字符相等
             {
                 i++;
                 j++;
@@ -107,3 +68,4 @@ public:
         return i == name.length();
     }
 };
+//是否是长安输入

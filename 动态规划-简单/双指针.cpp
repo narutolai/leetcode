@@ -52,6 +52,7 @@ public:
         return false;
     }
     //已知链表有环  返回环的起始位置
+    //为什么这样就一定会相遇
     ListNode *detectCycle(ListNode *head)
     {
         ListNode *fast, *slow;
@@ -61,7 +62,7 @@ public:
             fast = fast->next->next;
             slow = slow->next;
 
-            if (slow == fast)
+            if (slow == fast) 
                 break;
         }
         //相遇时让满指针回到起点 然后当快慢相遇时 就是环的起点
@@ -74,3 +75,4 @@ public:
         return slow;
     }
 };
+//遍历次数 1

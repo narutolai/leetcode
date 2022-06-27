@@ -32,7 +32,7 @@ public:
         {
             cur->right = new TreeNode(res[i]); //差点忘记了怎么建树了
             cur = cur->right;
-        }
+        } 
         return head;
     }
 };

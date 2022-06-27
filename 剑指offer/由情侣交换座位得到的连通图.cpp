@@ -29,7 +29,7 @@ public:
 test3::test3(int n)
 {
     count = n;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)//每一个人的爹都是他自己
         father.push_back(i);
 }
 
@@ -37,37 +37,11 @@ test3::~test3()
 {
 }
 
-int find(vector<int> &fa, int x)
-{
-    while (x != fa[x])
-        x = fa[x];
-    return x;
-}
-
-void funio(vector<int> &fa, int x, int y,int &count)
-{
-    int rootx = find(fa, x);
-    int rooty = find(fa, y);
-    if (rootx == rooty)
-        return;
-    fa[rootx] = fa[rooty];
-    count--;
-}
-
+//最少要交换几次座位，让所有的情侣都坐在一起
 int main()
 {
     vector<int> row{6, 2, 1, 7, 4, 5, 3, 8, 0, 9};
 
-    // vector<int> fa{0, 1, 2, 3, 4};
-    // int x = 0, y = 0;
-    // int count=fa.size();
-    // for (int i = 0; i < row.size(); i+=2)
-    // {
-    //     x = row[i] / 2;
-    //     y = row[i + 1] / 2;
-    //     funio(fa, x, y,count);
-    // }
-    // cout<<fa.size()-count<<endl;
 
     test3 te(5);
     int x=0,y=0;

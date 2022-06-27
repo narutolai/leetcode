@@ -19,8 +19,10 @@ public:
     int coinChange(vector<int> &coins, int amount)
     {
         vector<int> dp(amount + 1, amount + 1);
+        //凑成给定的金额 肯定是慢慢的金额从1 到amount
+        //然后因为是最小 ，所以每一个位置填上最大值也是没有关系的
         
-        dp[0] = 0;
+        dp[0] = 0;//amount为0的时候 当然是不需要硬币了
 
         for (int i = 0; i < dp.size(); i++)
         {

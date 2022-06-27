@@ -61,3 +61,5 @@ public:
         return (dp[amount] == amount + 1 ? -1 : dp[amount]);
     }
 };
+//一个是求所有的组合数
+//一个是求最少的拥抱数

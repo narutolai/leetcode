@@ -23,13 +23,13 @@ public:
         vector<int> dp = {0, -1, -1};
         map<int, vector<int>> count;
         int target = INT_MIN;
-
+        //一次遍历
         //通过这个for循环可以将每一个元素的这些信息填充并且找出数组的度
         for (int i = 0; i < nums.size(); i++)
         {
             if (count[nums[i]].size() == 0)
                 count[nums[i]] = dp;
-
+            //出现次数累加
             count[nums[i]][0] += 1;
             //起始位置只要记录一次
             if (count[nums[i]][1] == -1)

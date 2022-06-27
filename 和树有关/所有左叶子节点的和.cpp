@@ -21,3 +21,5 @@ public:
         return sumOfLeftLeaves(root->left) + sumOfLeftLeaves(root->right);
     }
 };
+//问怎么判断一个节点是不是左叶子节点呢
+//root->left != NULL && root->left->left == NULL && root->left->right == NULL

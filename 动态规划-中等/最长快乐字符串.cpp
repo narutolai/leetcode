@@ -31,7 +31,7 @@ public:
             //每选一次都会排序
             sort(rbegin(m), rend(m));
             int pre_size = ans.size();
-
+            //先选最大的数就可以了
             for (auto &[cnt, c] : m)
             {
                 //如果该字母剩余数量为0或者该字符与字符串ans的最后两个字符相等，就不能再添加该字母了 不然会出现3个重复的字符
@@ -48,3 +48,4 @@ public:
         return ans;
     }
 };
+//遍历次数1 

@@ -29,16 +29,37 @@ public:
             if (s[i] != ' ')
             {
                 string word;
-                while (s[i] != ' ' && i < s.size())
+                while (s[i] != ' ' && i < s.size()) //可以直接截取substr吧
                 {
                     word += s[i];
                     i++;
                 }
-                result.insert(0, " "+word);
+                result.insert(0, " " + word);
             }
         }
-        
+
         result.erase(0, 1);
         return result;
     }
+
+    string reverseWords(string st1)
+    {
+        string result;
+        for (int i = 0; i < st1.size(); i++)
+        {
+            if (st1[i] != ' ')
+            {
+                string word;
+                int stindex = i;
+                while (st1[i] != ' ' && i < st1.size()) //这里换成直接记录起始坐标。
+                {
+                    i++;
+                }
+                result.insert(0, " " + st1.substr(stindex, i - stindex));
+            }
+        }
+        result.erase(0, 1);
+    }
 };
+
+//遍历次数: 1

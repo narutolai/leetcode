@@ -10,15 +10,12 @@ public:
         for (int i = size1 - 1; i >= 0; i--)
             for (int j = size2 - 1; j >= 0; j--)
             {
-                int mul = (s1[i] - '0') * (s2[j] - '0');
-                int p1 = i + j, p2 = i + j + 1;
-
-                int sum = mul + res[p2];
-                res[p2] = sum % 10;
-                res[p1] += sum / 10;
+                int mul = (s1[i] - '0') * (s2[j] - '0') + res[i + j + 1];
+                res[i + j + 1] = sum % 10;
+                res[i + j] += sum / 10;
             }
         int i = 0;
-        while (i < res.size(); res[i] == 0)
+        while (i < res.size() && res[i] == 0)
             i++;
         string str;
         for (; i < res.size(); i++)
@@ -28,7 +25,7 @@ public:
         return str.size() == 0 ? "0" : str;
     }
 };
-
+//遍历次数 1
 int main()
 {
     Solution so;

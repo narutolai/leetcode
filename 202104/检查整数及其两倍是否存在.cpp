@@ -35,12 +35,14 @@ public:
 
         unordered_map<int, int> m;
         for (auto &x : arr)
-        {
-            if (m[x * 2] || m[x / 2] && x % 2 == 0)
-                return true;
+        {   //无序的数
+            if (m[x * 2] || m[x / 2] && x % 2 == 0)//相乘 或 相除且余数为0.
+                return true;    //return true;
             else
                 m[x] = 1;
         }
         return false;
     }
 };
+
+//遍历次数 1

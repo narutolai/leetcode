@@ -40,7 +40,7 @@ public:
         vector<vector<double>> dp(N, vector<double>(N, 0));
         dp[i][j] = 1;
         vector<vector<double>> pre;
-        for (int k = 0; k < K; k++)
+        for (int k = 0; k < K; k++)//依旧是一个立方体 x y z z就是k步伐
         {
             pre = dp;
             for (int i = 0; i < N; i++)
@@ -55,6 +55,7 @@ public:
                     double D7 = (i < N - 2 && j < N - 1) ? pre[i + 2][j + 1] : 0;
                     double D8 = (i < N - 1 && j < N - 2) ? pre[i + 1][j + 2] : 0;
                     dp[i][j] = (D1 + D2 + D3 + D4 + D5 + D6 + D7 + D8) / 8.0;
+                    //其实就是收集其他8个地方来中间的概率，那就是留在棋盘上的概率
                 }
         }
         double res = 0;
@@ -66,3 +67,8 @@ public:
         return res;
     }
 };
+//题目说了要求移动结束后 马还在棋盘上的概率，所以肯定是走完了所有的step
+//什么叫还在棋盘上的概率，如果步数为0 也就是不走 那么马还在棋盘上的概率就是100%，因为一开始就在xy处
+//后来因为会走动 走的步数越多 就越有可能出界，留在棋盘上的概率相对 的就是 出界的概率，每一步有8种走法，可能一些会出界 
+//一些会留在棋盘上
+//之前有一个出界的路径数，

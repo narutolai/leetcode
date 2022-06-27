@@ -16,14 +16,12 @@ public:
     {
         //感觉好多问题  其实不需要增加范围 但是呢 空间换时间 空间换时间，
         int size = nums.size(); //
-        vector<int> dp(nums.size());
-        int maxnum = 0;
+        vector<int> dp(size);       
         for (int i = 0; i < nums.size(); i++)
         {
             dp[i] = max((i - 2 < 0 ? 0 : dp[i - 2]) + nums[i], i - 1 < 0 ? 0 : dp[i - 1]);
-            maxnum = max(dp[i], maxnum);
         }
-        return maxnum;
-        return max_;
+        return dp[size - 1];
     }
 };
+//遍历次数 1

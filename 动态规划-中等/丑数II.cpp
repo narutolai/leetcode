@@ -120,3 +120,4 @@ public
     return u.nums[n - 1];
   }
 }
+//遍历次数1

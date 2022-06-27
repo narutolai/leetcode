@@ -18,5 +18,6 @@ public:
         int right = maxDepth(root->right);
 
         return max(left, right) + 1;
-    }
+    }//直接 return max(maxDepth(root->left, root->right)) + 1;
 };
+//遍历次数 1

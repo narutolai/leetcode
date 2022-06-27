@@ -16,11 +16,11 @@ public:
     {
         ListNode *pre = nullptr;
         ListNode *cur = head;
-        head=nullptr;
+        head = nullptr;
         ListNode *Link = nullptr;
         while (cur != nullptr)
         {
-           
+
             if (((pre == nullptr) ? 1 : (pre->val != cur->val)) && ((cur->next == nullptr) ? 1 : (cur->val != cur->next->val)))
             {
                 if (Link == nullptr)
@@ -33,29 +33,35 @@ public:
                     Link->next = cur;
                     Link = cur;
                 }
-              
-            } 
+            }
             pre = cur;
             cur = cur->next;
         }
-        if(Link!=nullptr)
-        Link->next=nullptr;
+        if (Link != nullptr)
+            Link->next = nullptr;
         return head;
     }
 };
 
-这里贴下递归的
-class Solution {
+//这里贴下递归的
+class Solution
+{
 public:
-    ListNode* deleteDuplicates(ListNode* head) {
-        if (!head || !head->next) {
+    ListNode *deleteDuplicates(ListNode *head)
+    {
+        if (!head || !head->next)
+        {
             return head;
         }
-        if (head->val != head->next->val) {
+        if (head->val != head->next->val)
+        {
             head->next = deleteDuplicates(head->next);
-        } else {
-            ListNode* move = head->next;
-            while (move && head->val == move->val) {
+        }
+        else
+        {
+            ListNode *move = head->next;
+            while (move && head->val == move->val)
+            {
                 move = move->next;
             }
             return deleteDuplicates(move);
@@ -63,3 +69,6 @@ public:
         return head;
     }
 };
+//遍历次数 1
+//注意是有序链表的重复元素 有序 有序 有序!!!
+//此题妙啊

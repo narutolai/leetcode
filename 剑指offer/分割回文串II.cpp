@@ -24,7 +24,9 @@ public:
 	int minCut(string s)
 	{
 		int n = s.size();
+		//一个字母肯定是回文串 所以全部初始化为true
 		vector<vector<bool>> mat(n, vector<bool>(n, true));
+		//这样不就可以直接知道s[i~j]是不是回文串了
 		for (int i = n - 1; i >= 0; i--)
 			for (int j = i + 1; j < n; j++)
 				mat[i][j] = (s[i] == s[j]) && mat[i + 1][j - 1];
@@ -34,9 +36,9 @@ public:
 
 		for (int i = 0; i < s.size(); i++)
 		{
-			if (mat[0][i]) //如果0-i是回文串 那就不用管了
+			if (mat[0][i]) //如果0~i不是回文串 那就不需要切割。
 				dp[i] = 0;
-			else
+			else			//否则肯定要对0~i 进行切割。
 			{
 				for (int j = 0; j < i; j++)			   //如果0-i 那么假设 0-
 					if (mat[j + 1][i])				   //如果 j不加1

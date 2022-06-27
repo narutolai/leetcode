@@ -21,13 +21,10 @@ public:
 class Solution
 {
 public:
-////使用两个栈就行了，
-//过程就是把s1的栈顶元素弹出压倒s2中去，但是把其子节点压回s1中去。在把s2的元素依次出栈就行了
     //后续遍历
     vector<int> postorder(Node *root)
     {
         stack<Node *> st1;
-        stack<Node *> st2;
         vector<int> res;
         if (!root)
             return res;
@@ -36,20 +33,15 @@ public:
         {
             Node *temp = st1.top();
             st1.pop();
-            st2.push(temp);
+            res.push_back(temp->val);
 
             for (auto child : temp->children)
                 st1.push(child);
         }
-        while (!st2.empty())
-        {
-            Node *temp = st2.top();
-            st2.pop();
-            res.push_back(temp->val);
-        }
+        reverse(res.begin(), res.end());
         return res;
     }
-    //前序遍历
+    //前序遍历 前序后序 都只要使用一个栈和一个vector就行了
     vector<int> preorder(Node *root)
     {
         if (!root)
@@ -64,9 +56,9 @@ public:
             cur = st.top(); //取栈顶
             st.pop();       //弹出元素
             result.push_back(cur->val);
-            //为什么要reverse() 不能直接从最后一个往前遍历的吗
-            reverse(cur->children.begin(), cur->children.end()); //
-            for (auto p : cur->children)                         //入栈
+
+            reverse(cur->children.begin(), cur->children.end());
+            for (auto p : cur->children)
             {
                 st.push(p);
             }
@@ -100,6 +92,33 @@ public:
             result.push_back(temp);
         }
         return result;
+    }
+    //二叉树的中序遍历 其实也是一个stack 和一个vec就搞定了
+    vector<int> midOrder(TreeNode *root)
+    {
+        stack<TreeNode *> stk;
+        TreeNode *cur = root;
+
+        while (!skt.empty())
+        {
+            while (cur)
+            {
+                stk.push(cur);
+                cur = cur->left;
+            }
+            cur = stk.top();
+            stk.pop();
+            res.push_back(cur->val);
+            if (cur->right)
+            {
+
+                cur = cur->right;
+            }
+            else
+            {
+                cur = nullptr;
+            }
+        }
     }
 };
 

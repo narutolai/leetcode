@@ -26,9 +26,9 @@ public:
     {
         vector<bool> isPrime(n, true);
         for (int i = 2; i * i < n; i++)
-            if (isPrime[i])
+            if (isPrime[i])//如果当前数是素数
                 for (int j = i * i; j < n; j += i)
-                    isPrime[j] = false;
+                    isPrime[j] = false;//那么他的倍数就都不是素数
 
         int count = 0;
         for (int i = 2; i < n; i++)
@@ -37,3 +37,4 @@ public:
         return count;
     }
 };
+//遍历次数1

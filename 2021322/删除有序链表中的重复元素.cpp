@@ -20,7 +20,7 @@ public:
         head = nullptr;
         while (cur != nullptr)
         {
-            if (pre == nullptr ? 1 : pre->val != cur->val)
+            if (pre == nullptr ? true : pre->val != cur->val)
             {
                 if (pre == nullptr)
                 {
@@ -39,4 +39,54 @@ public:
             pre->next = nullptr;
         return head;
     }
+    //错误的递归写法
+    ListNode *deleteDuplicates(ListNode *head)
+    {
+        if (head == nullptr || head->next == nullptr)
+            return head;
+     
+        if (head->val == head->next->val)
+        {
+            ListNode *cur = head->next;
+            while (cur->val == head->val && cur != nullptr)
+                cur = cur->next;
+            head->next = cur;
+
+            cur->next = deleteDuplicates(cur->next);
+        }
+        else
+        {
+            head->next = deleteDuplicates(head->next);//
+        }
+        return head;
+    }
+    //正确的递归写法
+    ListNode *deleteDuplicates(ListNode *head)
+    {
+        if (head == nullptr || head->next == nullptr)
+            return head;
+     
+        if (head->val == head->next->val)
+        {
+            ListNode *cur = head->next;
+            while (cur->val == head->val && cur != nullptr)
+            {  
+                  cur = cur->next;
+            }
+            return  deleteDuplicates(cur);
+        }
+        else
+        {
+            head->next = deleteDuplicates(head->next);//
+        }
+        return head;
+    }
 };
+//当指针作为左值，它需要被填充， 
+//好像这个有个递归的方法
+//竟然写错了 看来还是有点不理解递归函数
+//递归函数，当前节点的下一个节点应该是什么呢，
+//反正下一个节点的值不能和当前节点的值相等
+//反正我就相信你会返回正确的下一个节点，剩下的我什么都不用管，
+//只要甩出 head->next=  就可以，反正就是相信你可以返回正确的下一个节点。
+//怎么理解链表中的递归，把head想成倒数倒数第二个节点。

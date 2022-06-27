@@ -35,3 +35,4 @@ public:
         return sum;
     }
 };
+//直接排序就行了
