@@ -3,9 +3,7 @@
 // 在 S 上反复执行重复项删除操作，直到无法继续删除。
 
 // 在完成所有重复项删除操作后返回最终的字符串。答案保证唯一。
-
 //  
-
 // 示例：
 
 // 输入："abbaca"
@@ -13,32 +11,6 @@
 // 解释：
 // 例如，在 "abbaca" 中，我们可以删除 "bb" 由于两字母相邻且相同，这是此时唯一可以执行删除操作的重复项。之后我们得到字符串 "aaca"，其中又只有 "aa" 可以执行重复项删除操作，
 //所以最后的字符串为 "ca"。
-
-class Solution
-{
-public:
-    void dfs(string &s, int index)
-    {
-        if (index == s.size() || s.size() == 1)
-        {
-            return;
-        }
-        for (int i = index; i < int(s.size()) - 1; i++)
-        {
-            if (s[i] == s[i + 1])
-            {
-                s.erase(i, 2);
-                dfs(s, i - 1 < 0 ? 0 : i - 1);
-            }
-        }
-    }
-    string removeDuplicates(string S)
-    {
-        dfs(S, 0);
-        return S;
-    }
-};
-
 class Solution
 {
 public:
@@ -59,3 +31,5 @@ public:
         return stk;
     }
 };
+//遍历次数 1
+//不过这个题还是很妙的

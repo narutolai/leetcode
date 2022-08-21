@@ -79,3 +79,4 @@ public:
         return size - uf.count();
     }
 };
+//遍历次数1 要想牵手 情侣必须要相邻

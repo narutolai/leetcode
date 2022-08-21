@@ -35,7 +35,7 @@ public:
                 st.pop();
                 int n = st.top();
                 st.pop();
-                switch (*it.c_str()) //这里返回的是一个指针，指向字符，所以只能取内容了
+                switch (*it.c_str()) //这里返回的是一个指针，指向字符，所以只能取内容了 应该也可用char ch = it.c_str();
                 {
                 case '+':
                 {
@@ -54,7 +54,7 @@ public:
                 break;
                 case '/':
                 {
-                    st.push(n / m);
+                    st.push(n / m);//底下那个数/上面那个数比较好。
                 }
                 break;
                 default:
@@ -66,3 +66,5 @@ public:
     }
 };
 //牛 牛 牛
+//遍历次数 1
+//可以的 这道题还是可以的

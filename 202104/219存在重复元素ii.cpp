@@ -33,3 +33,4 @@ public://总结就是 值相等 但是索引差 <= k  使用map<int,list<int>>  
         return false;
     }
 };
+//遍历次数 1

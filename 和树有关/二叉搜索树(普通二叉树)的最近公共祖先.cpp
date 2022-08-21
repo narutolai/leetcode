@@ -57,34 +57,10 @@ public: //其实就是在二叉树里找一个节点。
             return NULL;
     }
 };
-//在普通二叉树中找一个节点
-class Solution
-{
-public: //其实就是在二叉树里找一个节点。
-    int flag;
-    TreeNode *find(TreeNode *root, int val)
-    {
-        if (flag) //减枝函数 ，减少递归函数栈的调用。有时搜索到了解就可以返回了，其他的遍历也可以停止了，
-            return root;
-
-        if (root == nullptr)
-            return nullptr;
-
-        if (root->all == val)
-        {
-            flag = true;
-            return root;
-        }
-        TreeNode *leftfind = find(root->left, p);
-        TreeNode *rightfind = find(root->right, p);
-
-        if (leftfind)
-            return leftfind; //非
-        if (rightfind)
-            return rightfind;
-
-        return nullptr; //我竟然在质疑要不要这个返回值。
-    }
-    //当然你也可以写一个没有返回值的二叉树遍历 设置一个全局标志了。
-};
-//遍历次数 1
+//遍历次数2
+//我觉得可以这样理解这个题,就是两个节点的汇聚点......
+//怎么样一个节点才是pq的最近祖先呢,除非,节点的
+//我靠！！！ 这个是唯一的！！！！！两个节点的最近公共祖先是唯一的！！！
+//就是一个节点左子树有p ，右子树有q,这个节点是唯一存在的！！！！！有且仅仅有一个！！！！我靠！！！
+//在普通二叉树中找一个节点,所以当该节点的left和right都有的时候那么就是那个唯一公共祖先！！
+//遍历次数 2

@@ -18,60 +18,6 @@ void outitem(ListNode *pivot)
 
 class Solution
 {
-public:
-    ListNode *Head;
-    //递归方式返回整个链表
-    ListNode *reverse(ListNode *head)
-    {
-        if (head->next == nullptr)
-        {
-            Head = head;
-            return head;
-        }
-
-        ListNode *temp = reverse(head->next);
-        temp->next = head;
-        return head;
-    }
-
-    ListNode *reverseBetween(ListNode *head, int left, int right)
-    {
-        ListNode *head_ = new ListNode();
-        head_->next = head;
-
-        ListNode *left_pre = head_;
-        int i = 0;
-        while ((i + 1) != left)
-        {
-            left_pre = left_pre->next;
-            i++;
-        }
-        ListNode *right_p = left_pre;
-        while (i != right)
-        {
-            right_p = right_p->next;
-            i++;
-        }
-
-        ListNode *right_af = right_p->next;
-        ListNode *pre = right_p->next;
-        ListNode *cur = left_pre->next;
-        ListNode *nex = cur == nullptr ? nullptr : cur->next;
-
-        while (cur != right_af)
-        {
-            cur->next = pre;
-            pre = cur;
-            cur = nex;
-            nex = (nex == nullptr) ? nex : nex->next;
-        }
-        left_pre->next = pre;
-        return head_->next;
-    }
-};
-
-class Solution
-{
 public: //反转整个链表
     ListNode *successor;
     //1-->2-->3-->4     倒数第2个调用栈
@@ -157,4 +103,9 @@ public: //反转整个链表
         return cur;
     }
 };
-//遍历次数 1
+//遍历次数 2
+//1.反转链表 直接返回newhead
+//2.反转链表前n个节点 需要后继者参数
+//3.反转链表的m--n个节点 需要借助2。
+//4.反转两个节点间的节点,左闭右开。
+//5.K个一组反转链表，需要借助4. k个一组反转链表可以多看看

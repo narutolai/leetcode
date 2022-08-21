@@ -14,14 +14,14 @@ public:
         int res = 0;
         while (l < r)
         {
-            int area = min(height[l], height[r]) * (l - r);
+            int area = min(height[l], height[r]) * (l - r);//1
 
             res = max(area, res);
             if (height[l] < height[r])
             {
                 l++;
             }
-            else
+            else    
             {
                 r--;
             }
@@ -31,3 +31,6 @@ public:
 };
 //注意这道题要和直方图的水量(202104中,去年4月份竟然在写leetcode题哈哈)区分开来
 //遍历方式1
+//为什么这么做是可行的,我们最终是要求出最大值,如果采用暴力法,我们应该要比较 (n+1)n/2 个 area,然后从中获取最大值
+//但是通过这种方式我们只需要比较n个area 就行了。这是为什么呢，因为这种方式每次获取的area 一定是以min(height[l], height[r])为
+//高的所有矩形里面积最大的。我们从多个最大area里找最大area 这样就避免了不必要的area比较

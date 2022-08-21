@@ -36,3 +36,5 @@ public:
         return head;
     }
 };
+//遍历次数 1 
+//怎么建立二叉树，，先给next赋值, 再跳去next.

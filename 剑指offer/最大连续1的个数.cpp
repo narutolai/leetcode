@@ -43,7 +43,7 @@ public:
         {
             //dp[i]=(nums[i]==1)?(i-1<0?1:dp[i-1]+1):0;
             //为什么要去判断i-1<0?
-         // count = nums[i] == 1 ? (i - 1 < 0 ? 1 : count + 1) : 0;
+            // count = nums[i] == 1 ? (i - 1 < 0 ? 1 : count + 1) : 0;
             count = nums[i] == 1 ? count + 1 : 0;
             maxone = max(maxone, count);
         }
@@ -51,3 +51,5 @@ public:
     }
 };
 //因为并不需要知道每一个数的连续1的个数  所以不需要用O(N)的空间复杂度 只需要O(1)的空间复杂度
+//一遍遍历 count = nums[i] == 1?count+1:0;
+//遍历次数 2

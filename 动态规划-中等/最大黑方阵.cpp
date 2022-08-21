@@ -37,15 +37,17 @@ public:
               r = i - size + 1;
               c = j - size + 1;
             }
-            if (size_ == size) //如果大小一样
+            else if (size_ == size) //如果大小一样
             {
               if (i - size + 1 < r)
               {
                 r = i - size + 1;
                 c = j - size + 1;
               }
-              if (i - size + 1 == r)      //如果r一样
+              else if (i - size + 1 == r) //如果r一样
+              {
                 c = min(j - size + 1, c); //取c最小的
+              }
             }
           }
         }

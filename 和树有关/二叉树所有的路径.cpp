@@ -9,6 +9,7 @@
  */
 class Solution
 {
+public:
     string path;
     vector<string> res;
 
@@ -27,10 +28,11 @@ public:
 
         if (!root->left && !root->right) //到了叶子节点处
         {
-            res.push_back(path);  //注意 这个后面不能加return的啊
+            res.push_back(path); //注意 这个后面不能加return的啊 因为这里return 了就无法把最后一个节点erase()了
         }
         backtrace(root->left);
         backtrace(root->right);
         path.erase(path.begin() + len, path.end()); //撤销选择
     }
 };
+//遍历次数 1

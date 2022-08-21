@@ -14,7 +14,7 @@ public:
         map<char, int> window;
         int left = 0;
         int right = 0;
-        int match = 0;
+        int match = 0;//匹配数是关键 
         int minLen = INT_MAX;
         int start = 0;
         while (right <= s.size())
@@ -83,7 +83,7 @@ public:
             right++;
             while (match == need.size())
             {
-                if (right - left == t.size())
+                if (right - left == t.size())//数量符合长度一样 
                 {
                     res.push_back(left);
                 }
@@ -131,4 +131,4 @@ public:
         return res;
     }
 };
-//遍历次数 1
+//遍历次数 2    

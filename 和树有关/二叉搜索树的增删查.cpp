@@ -29,7 +29,7 @@ public:
             root->right = addNode(root->right, val);
         return root;
     }
-    //二叉搜索树的删
+    //获取二叉搜索树的最小节点
     TreeNode *getMin(TreeNode *root)
     {
         while (root->left)
@@ -38,6 +38,7 @@ public:
         }
         return root;
     }
+     //二叉搜索树的删
     TreeNode *deleteNode(TreeNode *root, int val)
     {
         if (root == nullptr) //找不到 就不需要删了
@@ -47,18 +48,17 @@ public:
             if (root->left && root->right)
             {
                 //获取最小点 代替
-                TreeNode *min = getMin(root->right);
+                TreeNode *min = getMin(root->right);//替换 删除 
                 swap(root->val, min->val);
-                root->right = deleteNode(root->right, val);
+                root->right = deleteNode(root->right, val);//替换 删除 替换删除!!!!!
             }
             else if (root->left)
             {
-
-                return root->left;
+                return root->left;//拼接
             }
             else if (root->right)
             {
-                return root->right;
+                return root->right;//拼接
             }
             else
             {
@@ -72,3 +72,6 @@ public:
         return root;
     }
 }
+//遍历次数 2 
+//是二叉搜索树的 查 增 删
+//可以  也有意思 多做做！！写完了！

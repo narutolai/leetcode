@@ -25,32 +25,36 @@
 // 解释：最后得到的子数组不能为空，所以我们不能选择 [-1] 并从中删去 -1 来得到 0。
 //      我们应该直接选择 [-1]，或者选择 [-1, -1] 再从中删去一个 -1。
 
-class Solution {
+class Solution
+{
 public:
-    int maximumSum(vector<int>& arr) {
+    int maximumSum(vector<int> &arr)
+    {
         int n = arr.size();
         int ans = 0;
-        vector<int> left(n,0);
-        vector<int> right(n,0);
-        
+        vector<int> left(n, 0);
+        vector<int> right(n, 0);
+
         /*intial*/
         left[0] = arr[0];
-        right[n-1] = arr[n-1];
+        right[n - 1] = arr[n - 1];
         /*left*/
-        ans = max(left[0],right[n-1]);
-        for(int i = 1; i < n; ++i){
-            left[i] = arr[i] + max(0,left[i-1]);
-            ans = max(ans,left[i]);
+        ans = max(left[0], right[n - 1]);
+        for (int i = 1; i < n; ++i)
+        {
+            left[i] = arr[i] + max(0, left[i - 1]);
+            ans = max(ans, left[i]);
         }
         /*right*/
-        for(int i = n-2; i >= 0; --i){
-            right[i] = arr[i] + max(0,right[i+1]);
-            ans = max(ans,right[i]);
+        for (int i = n - 2; i >= 0; --i)
+        {
+            right[i] = arr[i] + max(0, right[i + 1]);
+            ans = max(ans, right[i]);
         }
-        for(int i = 1; i <= n-2; ++i){
-            ans = max(left[i-1]+right[i+1],ans);
+        for (int i = 1; i <= n - 2; ++i)
+        {
+            ans = max(left[i - 1] + right[i + 1], ans);
         }
         return ans;
     }
 };
-

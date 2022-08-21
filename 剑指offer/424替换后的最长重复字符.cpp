@@ -47,3 +47,6 @@ public:
         return s.size() - left;
     }
 };
+//我们可以尝试分析一下这个序列 
+// BACAADF  假设 k = 1
+// 

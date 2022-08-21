@@ -37,4 +37,4 @@ public:
 };
 //m[2] = m[2 - difference] + 1
 //m[3] = m[3 - dfference] + 1
-//真的的是有趣
+//真的的是有趣 map里 数没有就是0啊

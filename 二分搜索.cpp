@@ -12,7 +12,7 @@ int binarySearch(vector<int> &nums, int target)
       return mid;
   }
   return -1;
-}  
+}
 
 //  2 3 4   5
 int leftbound(vector<int> &nums, int target)
@@ -48,3 +48,4 @@ int rightbound(vector<int> &nums, int target)
     return -1;
   return nums[left - 1] == target ? left - 1 : -1;
 }
+//遍历次数 1

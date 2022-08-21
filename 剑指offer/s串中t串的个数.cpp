@@ -35,12 +35,16 @@ public:
         for (int i = 1; i <= m; i++)
             for (int j = 1; j <= n; j++)
             {
+                dp[i][j] = dp[i][j - 1];
                 if (t[i - 1] == s[j - 1])
-                    dp[i][j] = dp[i][j - 1] + dp[i - 1][j - 1];
-                else
-                    dp[i][j] = dp[i][j - 1];
+                    dp[i][j] += dp[i - 1][j - 1];
             }
         return dp[m][n];
     }
 };
-//遍历次数 1
+//遍历次数 2
+//举一个很简单的例子
+//s串: abcfbcd
+//t串:     bcd
+//abcfbcd中bcd的个数 等于abcfbc里bcd的个数 + adcfbc里bc的个数
+//s[i]串里几个t[j]串,不管怎么样肯定要先加上s[i-1]里t串的个数啊 这不是废话吗

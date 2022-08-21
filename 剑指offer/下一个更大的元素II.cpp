@@ -59,3 +59,4 @@ public: //非循环数组
 		return result;
 	}
 };
+//遍历次数 1

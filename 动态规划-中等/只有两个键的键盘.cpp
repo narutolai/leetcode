@@ -19,14 +19,12 @@ class Solution
 public:
     int max_(int x) //找到一个数的最大因子
     {
-        int a = 0;
         for (int i = x - 1; i >= 1; i--)
             if (x % i == 0)
             {
-                a = i;
-                break;
+                return i;
             }
-        return a;
+        return x;
     }
     //dp[n]表示有n个A的最少操作次数
     int minSteps(int n)
@@ -41,3 +39,4 @@ public:
         return dp[n];                              //如果是9那就是dp[3] 拷贝一次 +复制二次 一共是 dp[4]+3次
     }
 };
+//注意这道题目的关键是 只能拷贝和复制

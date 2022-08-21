@@ -22,13 +22,16 @@ public:
         {
             if (next->val == val)
             {
-                cur->next = next->next; // 
+                cur->next = next->next; //
             }
-            cur = next;
+            else
+            {
+                cur = next;
+            }
             next = next->next;
         }
         return head;
     }
     //删除链表中的一个值 有相同的都删掉 1 2 2 3 4 2 2 6;
-     
 };
+//遍历次数 1

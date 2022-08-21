@@ -70,3 +70,5 @@ vector<int> postorderTraversal(TreeNode *root)
     }
     return res;
 }
+//我发现 后续遍历就是前序遍历反过来就行了！！！！直接反转就行了！！
+//遍历顺序！！！

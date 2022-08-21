@@ -3,88 +3,65 @@ class Solution
 public:
 	double findMedianSortedArrays(vector<int> &nums1, vector<int> &nums2)
 	{
-		vector<int>::const_iterator iter1 = nums1.begin(), iter2 = nums2.begin();
-		int k1 = 0, k2 = 0;
-		int count = nums2.size() + nums1.size();
-		if (count % 2)
-		{
-			k1 = count / 2 + 1;
-		}
-		else
-		{
-			k1 = count / 2;
-			k2 = count / 2 + 1;
-		}
+		int i = nums1.size(), j = nums2.size();
+		int size1 = nums1.size(), size2 = nums2.size();
 
-		int number = 0, pivot1 = 0, pivot2 = 0;
+		int midindex = size1 / 2; //计算中位数需要的下标
+
+		int num1 = 0, num2 = 0;
+		int count = 0;
+		int MinNum = 0;
 		//开始遍历数组
-		while (iter1 != nums1.end() && iter2 != nums2.end())
+		while (i < size1 && j < size2)
 		{
-			if (*iter1 <= *iter2)
+			count++;
+			MinNum = (nums1[i] < nums2[j]) ? nums1[i++] : nums2[j++];
+			if (count == midindex)
 			{
-				number++;		  //每比较一个数，总个数就加1
-				if (number == k1) //然后把这个数记录下来就行了
-				{
-					pivot1 = *iter1;
-				}
-				if (number == k2)
-				{
-					pivot2 = *iter1;
-					break;
-				}
-				iter1++;
+				num1 = MinNum;
 			}
-			else
+			if (count == midindex + 1)
 			{
-				number++;
-				if (number == k1)
-				{
-					pivot1 = *iter2;
-				}
-				if (number == k2)
-				{
-					pivot2 = *iter2;
-					break;
-				}
-				iter2++;
-			}
-		}
-		while (iter1 != nums1.end() && pivot2 != 0)
-		{
-			number++;
-			if (number == k1)
-			{
-				pivot1 = *iter1;
-			}
-			if (number == k2)
-			{
-				pivot2 = *iter1;
+				num2 = MinNum;
 				break;
 			}
-			iter1++;
 		}
-		while (iter2 != nums2.end() && pivot2 != 0)
+		while (i < size1 && num2 == 0)
 		{
-			number++;
-			if (number == k1)
+			count++;
+			if (count == midindex)
 			{
-				pivot1 = *iter2;
+				num1 = nums1[i];
 			}
-			if (number == k2)
+			if (count == midindex + 1)
 			{
-				pivot2 = *iter2;
+				num2 = nums1[i++];
 				break;
 			}
-			iter2++;
+		}
+		while (j < size2 && num2 == 0)
+		{
+			count++;
+			if (count == midindex)
+			{
+				num1 = nums2[j];
+			}
+			if (count == midindex + 1)
+			{
+				num2 = nums2[j++];
+				break;
+			}
 		}
 
-		if (count % 2)
+		if (count % 2) //总元素个数为奇数 中位数就是第k2个
 		{
-			return pivot1;
+			return num2;
 		}
 		else
 		{
-			return (pivot1 + pivot2) / 2.0;
+			return (num1 + num2) / 2.0; //否是是 (k2+k1)/2
 		}
 	}
 };
+//遍历次数1
+//找两个有序数组的中位数,从小到大排序

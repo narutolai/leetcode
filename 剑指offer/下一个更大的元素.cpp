@@ -70,12 +70,38 @@ public:
 		for (int i = 0; i < 2 * n - 1; i++)
 		{
 			//如果当前元素大于栈顶下标元素，可以一屁股坐死的都一屁股坐死。
-			while (!st.empty() && nums[i % n] > nums[st.top()])
+			while (!st.empty() && nums[st.top()] < nums[i % n])
 			{
 				result[st.top()] = nums[i % n];
 				st.pop();
 			}
 			st.push(i % n);
+		}
+		return result;
+	}
+};
+
+//遍历次数 1
+//核心就是while里做的 if(nums[i] > nums[stk.top()]) result[stk.top()]  = nums[i];
+// 而在本题中，我们不需要显性地将该循环数组「拉直」，而只需要在处理时对下标取模即可
+class Solution
+{
+public:
+	vector<int> nextGreaterElements(vector<int> &nums)
+	{
+		int n = nums.size();
+		vector<int> result(nums.size(), -1);
+		//单调递减栈 存储下标 不存数
+		stack<int> st;
+		for (int i = 0; i <  n ; i++)
+		{
+			//如果当前元素大于栈顶下标元素，可以一屁股坐死的都一屁股坐死。
+			while (!st.empty() && nums[st.top()] < nums[i])
+			{
+				result[st.top()] = nums[i];
+				st.pop();
+			}
+			st.push(i);
 		}
 		return result;
 	}

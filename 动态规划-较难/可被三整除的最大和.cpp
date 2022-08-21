@@ -66,20 +66,20 @@ public:
         if(dp[2] > 0)
         dp[0] = max(dp[0], dp[2]+ num[i]) // 1 2 --> 0
 
-        do[1] = max(dp[1], dp[0] + num[i])// 1 0---> 1
+        dp[1] = max(dp[1], dp[0] + num[i])// 1 0---> 1
 
         if(dp[1] > 0)
         dp[2] = max(dp[2], dp[1] + num[i])// 1 1---->2
     }
 
     if(mod == 2)
-    {
+    {i
         if(dp[1] > 0)
         dp[0]=max(dp[0], dp[1] + num[i])  1 2 ---> 0
-
+i
         if(dp[2] > 0)
-        dp[1] = max(dp[1], dp[2] + num[2]) // 2 2----> 1 因为4%3 = 1
+        dp[1] = max(dp[1], dp[2] + num[i]) // 2 2----> 1 因为4%3 = 1
 
-        dp[2] = max(dp[2], dp[0] + num[2]) // 0 2 ---->2 
+        dp[2] = max(dp[2], dp[0] + num[i]) // 0 2 ---->2 
     }
 }

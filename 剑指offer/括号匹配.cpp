@@ -46,7 +46,8 @@ public:
                 {
                     st.pop();
                 }else{
-                    st.push(cha);
+                    st.push(cha);// 这里是不是可以直接返回false了
+                    //return false; //可以直接返回false了
                 }
             }
             else{
@@ -56,3 +57,5 @@ public:
         return st.empty();
     }
 };
+//遍历次数 1,左括号入栈，遇见右括号看能否弹出 最后返回栈是否是空的
+// 可以直接返回false

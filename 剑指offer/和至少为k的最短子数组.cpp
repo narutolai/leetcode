@@ -25,15 +25,17 @@ public:
         deque<int> buff;
         int minvalue = INT32_MAX;
 
+        //为什么还有一个前缀和
         for (int i = 0; i < presum.size(); i++)
         {
             presum[i] = (i - 1 < 0 ? 0 : presum[i - 1]) + A[i];
         }
-
+        //存储下标
         //想象成是一个窗口
         for (int i = 0; i < presum.size(); i++)
-        {
-            while (!buff.empty() && presum[i] < presum[buff.front()]) //如果当前A[i]<0
+        {   
+            //保持deque中的前缀和是递增的
+            while (!buff.empty() && presum[i] < presum[buff.front()]) //就是说A[i]是个负数
             {
                 buff.pop_front(); //弹出到抵消的那一刻
             }
@@ -45,10 +47,13 @@ public:
                 minvalue = min(minvalue, i - buff.back());
                 buff.pop_back();
             }
-
-
             buff.push_front(i);
         }
         return minvalue == INT32_MAX ? -1 : minvalue;
     }
 };
+//deque buff
+//      pop_back() <------|||||||||||---->pop_front()
+//遍历次数 1 至今不明白 有没有别的解法
+//这样总是可以获取最小值吗
+//假如数据是 2 2 2 2 -4

@@ -35,7 +35,7 @@ public:
 
         unordered_map<int, int> m;
         for (auto &x : arr)
-        {   //无序的数
+        {   // 如果一个数的2倍存在或者一个数的一半存在且x不为0 那么就return true;
             if (m[x * 2] || m[x / 2] && x % 2 == 0)//相乘 或 相除且余数为0.
                 return true;    //return true;
             else

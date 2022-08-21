@@ -34,7 +34,7 @@ public:
 				return false;
 			}
 		}
-		return i > j;
+		return true;
 	}
 	
 	void dfs(string s,vector<string> &temp)
@@ -54,7 +54,7 @@ public:
 			}
 		}
 	}
-//遍历次数 1
+//遍历次数 1 典型的分割实现
 	vector<vector<string>> partition(string s)
 	{
 		vector<string> temp;
@@ -62,3 +62,4 @@ public:
 		return result;
 	}
 };
+//遍历次数2典型的回溯

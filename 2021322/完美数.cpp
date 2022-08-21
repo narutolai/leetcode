@@ -15,7 +15,7 @@ public:
                     sum += num / i;
             }
         }
-
         return sum == num * 2;
     }
 };
+//遍历次数 1 题目有点意思

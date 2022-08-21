@@ -53,15 +53,15 @@ public:
         int i = 0, ans = 0, end_t;
 
         while (i < clips.size() && preEnd < T)
-        {   
-            //当前视频开始时间小于上一个视频的结束时间
-            if (clips[i][0] <= preEnd) //当前开始时间点肯定要小于或等于上一个最远结束时间点啊
+        {
+            //在当前开始时间小于前一个片段的结束时间下，
+            if (clips[i][0] <= preEnd) //
             {
                 end_t = preEnd;
-
-                while (i < clips.size() && clips[i][0] <= end_t) //大于当前时间结束点时退出
-                {                                                //然后在所有片段开始时间小于上一个结束时间的片段中
-                    preEnd = max(preEnd, clips[i][1]);           //t取最远时间点 感觉主要是找到第一个大于end_t的区间索引i
+                //找到最大的结束时间
+                while (i < clips.size() && clips[i][0] <= end_t) 
+                {                                                
+                    preEnd = max(preEnd, clips[i][1]);            
                     i++;
                 }
                 ans++;
@@ -82,3 +82,5 @@ public:
 //那么第二个视频要怎么选呢，肯定是 开始时间在0-5之间 然后结束时间越晚越好的啊
 //所以肯定要知道上一个视频的结束时间  
 //略懂 略懂
+//将片段排序 然后开始时间相同选择最晚的结束时间
+//遍历次数2

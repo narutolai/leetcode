@@ -12,11 +12,13 @@
 // 输入: 10
 // 输出: 36
 // 解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36
-
+#include<math.h>
+#include<iostream>
+using namespace std;
 class Solution
 {
 public:
-    int cuttingRope(int n)
+    long long cuttingRope(int n)
     {
         //这不是一个数学推导吗
         //注意这个题至少分两段
@@ -24,8 +26,8 @@ public:
             return 1;
         if (n == 3)
             return 2;
-        int x = n / 3, y = n % 3;
-        if (y == 0)
+        long x = n / 3, y = n % 3;
+        if (y == 0) //余数为0 1 2
             return pow(3, x);
         else if (y == 1)
             return pow(3, x - 1) * 4;
@@ -33,3 +35,9 @@ public:
             return pow(3, x) * 2;
     }
 };
+
+int main()
+{
+    Solution so;
+    cout << so.cuttingRope() << endl;
+}

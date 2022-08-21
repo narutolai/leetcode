@@ -42,15 +42,15 @@ public:
                 ++left;
                 --right;
             }
-            if (nums[left] <= nums[mid])
+            if (nums[left] <= nums[mid])//那么我可以保证 left---mid 这部分数据是有序的,既然是有序的,那就可以在这之间二分查找数据
             {
-                if (nums[left] <= target && target < nums[mid])
+                if (nums[left] <= target && target < nums[mid])//如果target在其中 缩小right
                 {
                     right = mid - 1;
                 }
                 else
                 {
-                    left = mid + 1;
+                    left = mid + 1;                 //否则增大left
                 }
             }
             else
@@ -70,3 +70,4 @@ public:
 };
 //这个方法亲测可用 没什么问题的
 //遍历次数 1 
+//题目应该是旋转数组中找目标数

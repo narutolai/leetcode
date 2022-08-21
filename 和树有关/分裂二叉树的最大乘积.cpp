@@ -33,3 +33,5 @@ public:
         return (int)(ans % mod);
     }
 };
+//这个题目可以的。
+//遍历次数 1

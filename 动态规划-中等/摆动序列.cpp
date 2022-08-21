@@ -25,14 +25,14 @@ public:
     int n = nums.size();
     if (n < 2)
       return n;
-    //真的绝了啊
+    //真的绝了啊 摆动序列的长度 最小为1
     int up = 1;
     int down = 1;
     for (int i = 1; i < n; i++)
     {
-      if (nums[i] > nums[i - 1])
+      if (nums[i] > nums[i - 1])//上升 差在正数和负数之间交替如果上升  再上升 那么up依旧是等于down+1
         up = down + 1;
-      if (nums[i] < nums[i - 1])
+      if (nums[i] < nums[i - 1])//下降
         down = up + 1;
     }
     return max(up, down);

@@ -39,4 +39,6 @@ public:
         return res;
     }
 };
-//遍历次数 1
+//遍历次数 2
+//这个要用queue, 头入queue,while中取size for中循环再push。 算了记口诀吧.
+//头入queue while取size for中循环再push

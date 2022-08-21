@@ -90,7 +90,7 @@ public:
         //该结构体重载该函数即可
         bool operator<(const Status &rhs) const
         {
-            return val > rhs.val;
+            return val > rhs.val; //那这里就是大于
         }
     };
 
@@ -101,12 +101,12 @@ public:
         for (auto node : lists)
         {
             if (node)
-                q.push({node->val, node});//可以直接这样构造这个Status
+                q.push({node->val, node});//可以直接这样构造这个Status先向队列中压入每一个链表的头元素
         }
         ListNode head, *tail = &head;
         while (!q.empty())
         {
-            auto f = q.top();
+            auto f = q.top();//如果是要弹出最小值
             q.pop();
             tail->next = f.ptr;
             tail = tail->next;
@@ -116,4 +116,5 @@ public:
         return head.next;
     }
 };
-//遍历次数 1
+//遍历次数 2
+//话不多说直接用优先队列，但是优先队列是怎么用的很关键。算法还是其次。重载运算符注意

@@ -30,8 +30,9 @@ public:
                     dp[i][j] = ((i - 1 < 0 || j - 1 < 0) ? 0 : dp[i - 1][j - 1]) + 1;
                     len = max(len, dp[i][j]);
                 }
-                else dp[i][j] = max(dp[i][j-1], dp[i-1][j]);//不要这一句的吗
+                else dp[i][j] = max(dp[i][j-1], dp[i-1][j]);//不要这一句的吗 要的吧
             }
         return len;
     }
 };
+//遍历次数1

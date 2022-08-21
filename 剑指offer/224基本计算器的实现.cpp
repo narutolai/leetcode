@@ -18,7 +18,7 @@ public:
 			c = s[index++];
 			//s.erase(0,1);//是不是这里太费劲了
 			if (isdigit(c))
-			{
+			{ 	
 				num = num * 10 + (c - '0');
 			}
 			
@@ -68,3 +68,6 @@ public:
 	}
 };
 //遍历次数+1
+//注意栈中的元素最后会累加 4个纯if 没有else 然后累加栈中的元素
+//index = s.size() 很难判断 当前符号是 = - * / 以及表达式的最后一个元素时要进入switch
+//char c = s[index++] ;比较好

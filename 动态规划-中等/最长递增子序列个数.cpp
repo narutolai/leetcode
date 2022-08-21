@@ -33,23 +33,23 @@ public:
         if (!nums.size())
             return 0;
         int n = nums.size();
-        vector<int> count(n, 1);
+        vector<int> count(n, 1); //序列个数
         int max_ = INT_MIN;
-        vector<int> dp(n, 1);
+        vector<int> dp(n, 1); //以nums[i]结尾的上升子序列长度。肯定是最长长度
 
         for (int i = 0; i < n; i++)
         {
             dp[i] = 1;
             for (int j = 0; j < i; j++)
             {
-                if (nums[i] > nums[j])//如果 num[i]>num[j] 
+                if (nums[i] > nums[j]) //如果 num[i]>num[j]
                 {
-                    if (dp[j] + 1 > dp[i])
+                    if (dp[j] + 1 > dp[i]) //长度更新了
                     {
-                        dp[i] = dp[j] + 1;
-                        count[i] = count[j];
+                        dp[i] = dp[j] + 1;   //更新长度dp[i]
+                        count[i] = count[j]; //更新数量
                     }
-                    else if (dp[j] + 1 == dp[i])
+                    else if (dp[j] + 1 == dp[i]) //长度没更新 更新数量
                         count[i] += count[j];
                 }
             }

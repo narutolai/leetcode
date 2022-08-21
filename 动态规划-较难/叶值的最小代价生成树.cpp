@@ -7,7 +7,7 @@
 
 // 示例：
 
-// 输入：arr = [6,2,4]
+// 输入：arr = [6,2,4,4,5,6] //哈夫曼编码的变种吗
 // 输出：32
 // 解释：
 // 有两种可能的树，第一种的非叶节点的总和为 36，第二种非叶节点的总和为 32。
@@ -23,6 +23,7 @@
 //而此时左右两边子树分别选出最大值的乘积就是此时的根，也就是题目中说的非叶节点
 //所以我们可以假定从i到j位，最小和可能是：此刻k位左右两边元素中最大值的乘积 + 子问题k左边(i,k)的最小值 + 子问题k位右边(k+1,j)的最小值
 //即：dp[i][j]=min(dp[i][j], dp[i][k] + dp[k+1][j] + max[i][k]*max [k+1][j])
+//
 //这道题跟leetcode1039一个套路
 //求arr从i到j之间的元素最大值, 保存在max[i][j]中
 //这道题i和j是可以相等的
@@ -35,6 +36,7 @@ public:
         //dp[i][j]=min(dp[i][j], dp[i][k] + dp[k+1][j] + max[i][k]*max[k+1][j])
         int n = arr.size();
         vector<vector<int>> max_(n, vector<int>(n, 0));
+        //max_[i][j] 是 arr(i,j) 内的最大数
         for (int i = 0; i < n; i++)
         {
             int maxvalue = arr[i];
@@ -44,15 +46,14 @@ public:
                 max_[i][j] = maxvalue;
             }
         }
-        vector<vector<int>> dp(n, vector<int>(n, 0));
+        //n3次方  时间复杂度蛮高的
+        vector<vector<int>> dp(n, vector<int>(n, INT_MAX));
         for (int i = 0; i < n; i++)
             for (int j = i; j >= 0; j--)
             {
-                int min_ = INT_MAX;
                 for (int k = j; k < i; k++)
                 {
-                    min_ = min(min_, dp[j][k] + dp[k + 1][i] + max_[j][k] * max_[k + 1][i]);
-                    dp[j][i] = min_;
+                    dp[j][i] = min(dp[j][i], dp[j][k] + dp[k + 1][i] + max_[j][k] * max_[k + 1][i]);
                 }
             }
         return dp[0][n - 1];
