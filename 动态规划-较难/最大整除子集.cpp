@@ -41,8 +41,8 @@ public:
         for (int i = 1; i < size; i++)
             for (int j = i - 1; j >= 0; j--)
             {
-                if (nums[i] % nums[j] == 0 && dp[j] + 1 > dp[i])
-                {
+                if (nums[i] % nums[j] == 0 && dp[j] + 1 > dp[i])//为什么是+1大于dp[i]啊???????
+                {           //如果dp[j] + 1 = dp[i] 那也就没必要赋值了对吧，
                     dp[i] = dp[j] + 1;
                     pre[i] = j;
                 }
@@ -60,3 +60,8 @@ public:
         return res;
     }
 };
+
+//没有明白哦我擦
+//没有明白为什么是
+//遍历次数 3  没懂哦
+//没懂我擦

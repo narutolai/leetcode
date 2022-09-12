@@ -20,7 +20,7 @@ public:
         int n = grid[0].size();
         
 
-        //dp[i][j][0/1] 表示在（i,j）处 垂直方向和水平方向上连续1的个数
+        //dp[i][j][0/1] 表示在（i,j）处 往上数和往左数的连续1的个数
         vector<vector<vector<int>>> dp(m, vector<vector<int>>(n, vector<int>(2, 0)));
         int size = 0;
         for (int i = 0; i < m; i++)
@@ -36,7 +36,7 @@ public:
                     dp[i][j][0] = (j - 1 < 0 ? 0 : dp[i][j - 1][0]) + 1;
                     dp[i][j][1] = (i - 1 < 0 ? 0 : dp[i - 1][j][1]) + 1;
 
-                    //两者的最小值
+                    //两者的最小值,这个判断条件很妙啊
                     for (int size_ = min(dp[i][j][0], dp[i][j][1]); size_ >= size; size_--)
                     {
                         if (dp[i - size_ + 1][j][0] >= size_ && dp[i][j - size_ + 1][1] >= size_) //如果该子方阵真的存在
@@ -76,3 +76,6 @@ public:
         return maxlength * maxlength;
     }
 };
+//遍历次数 3
+//边界全为 1 的正方形 我们需要记录每一个位置向上和向下的连续1 的个数
+//内容全为1 的正方形的处理方式是不一样的。
