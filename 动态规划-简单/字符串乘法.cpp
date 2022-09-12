@@ -25,7 +25,8 @@ public:
         return str.size() == 0 ? "0" : str;
     }
 };
-//遍历次数 1
+//遍历次数 3
+//i+j i+j+1 的问题 i+j i+j+1的问题  
 int main()
 {
     Solution so;
@@ -33,3 +34,4 @@ int main()
     cout << so.multiply("123", "23") << endl;
     return 0;
 }
+//我怎么想到了编码的奥秘里的与非门呢

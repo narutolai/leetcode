@@ -6,7 +6,7 @@
 class Solution
 {
 public:
-    string Exist(string s, string t)
+    string Exist(string s, string t)//两个窗口,一个是need window 还有一个是 window
     {
         map<char, int> need;
         for (auto c : t)
@@ -20,10 +20,10 @@ public:
         while (right <= s.size())
         {
             char c = s[right];
-            //如果字符需要统计
+            //如果字符需要统计 如果字符是需要统计的字符的话
             if (need[c])
             {
-                window[c]++;
+                window[c]++;//如果需要统计才计入窗口中,如果需要统计才计入窗口中。
                 if (window[c] == need[c])
                     match++; //统计符合条件
             }
@@ -49,7 +49,7 @@ public:
         return minLen == INT_MAX ? "" : s.substr(start, minLen);
     }
 };
-
+//window和need window和need ，window和need。window和need window和need window和need  window和need
 //找到字符串中的所有字母异位词
 //给一个字符串s 和字符串p  找到s中所有是p的字母异位词的字串 返回这些字串的起始位置
 //s="cbadefbac"   p="abc"
@@ -101,6 +101,7 @@ public:
         return res;
     }
 };
+//第2题和第1题是一样的啊
 //无重复字符的最长字串
 //给定一个字符串 请你找出其中不含有重复字符的最长字串的长度
 //s ="abcabcbb"  长度为3
@@ -109,7 +110,7 @@ public:
 class Solution
 {
 public:
-    string Exist(string s, )
+    int Exist(string &s)
     {
         map<char, int> window;
         int res = 0;
@@ -117,18 +118,22 @@ public:
         int right = 0;
         while (right <= s.size())
         {
-            char c = s[right];
-            window[c]++;
+            char c1 = s[right];
+            window[c1]++;
             right++;
-            while (window[c] > 1)
+            //当窗口中出现重复的子串时,左边缩小 直到这个字符的出现次数不大于1
+            while (window[c1] > 1)
             {
-                char c = s[left];
-                window[c]--;
+                char c2 = s[left];
+                window[c2]--;
                 left++;
             }
+            //每次往右边移动一次都会求一次max
             res = max(res, right - left);
         }
         return res;
     }
 };
-//遍历次数 2    
+//遍历次数 第3次 2022-09-07 17:36
+//两个while循环
+//还行吧 算是又加深一遍记忆了

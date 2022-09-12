@@ -16,7 +16,7 @@ public:                                    //s1->s2的最小编辑距离
         for (int j = 1; j <= s1size; j++)
             dp[j][0] = j;
 
-        //接着我看开始遍历这个二维dp数组
+        //接着我开始遍历这个二维dp数组
         for (int i = 1; i <= s1size; i++)
             for (int j = 1; j <= s2size; j++)
             {   
@@ -33,4 +33,11 @@ public:                                    //s1->s2的最小编辑距离
         return dp[s1size][s2size];
     }
 };
-//遍历次数 2 , 我怎么想到了字符串匹配呢
+//遍历次数 2 , 我怎么想到了字符串匹配呢空串问题
+/**
+ *      a b c d e
+ *       
+ *  q
+ *  e
+ *  f
+*/

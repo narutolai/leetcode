@@ -32,18 +32,18 @@ public:
             return head2;
         if (head2 == NULL)
             return head1;
-        ListNode *res, *p;
+        ListNode *NewHead, *p;
         if (head1->val < head2->val)
         {
-            res = head1;
+            NewHead = head1;
             head1 = head1->next;
         }
         else
         {
-            res = head2;
+            NewHead = head2;
             head2 = head2->next;
         }
-        p = res;
+        p = NewHead;
 
         while (head1 != NULL && head2 != NULL)
         {
@@ -63,6 +63,8 @@ public:
             p->next = head1;
         else if (head2 != NULL)
             p->next = head2;
-        return res;
+        return NewHead;
     }
 };
+//遍历次数 1
+//这个题目起的不好 ，应该是叫合并两个有序链表吧。不是有一个递归的方法
