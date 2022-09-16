@@ -8,17 +8,14 @@
 // 解释：从上往下数，叠罗汉最多能叠 6 层：(56,90), (60,95), (65,100), (68,110), (70,150), (75,190)
 
 // 我觉得这是二维的最长上升子序列。不对 这是信封嵌套问题。
-//  
+//
 class Solution
 {
 public:
     //二维最长上升子序列
     static bool comp(vector<int> &a, vector<int> &b)
     {
-        if (a[0] == b[0])
-            return a[1] > b[1];
-        else
-            return a[0] < b[0];  
+        return a[0] < b[0] || (a[0] == b[0] && a[1] > b[1]);
     }
     int bestSeqAtIndex(vector<int> &height, vector<int> &weight)
     {
@@ -26,7 +23,7 @@ public:
         vector<vector<int>> item(m, vector<int>(2, 0));
         for (int i = 0; i < m; i++)
             item[i] = {height[i], weight[i]};
-        //先排一个顺序 然后再按照最长上升子序列的方式来做       
+        //先排一个顺序 然后再按照最长上升子序列的方式来做
         sort(item.begin(), item.end(), comp);
         vector<int> top(m);
         int piles = 0;
@@ -41,10 +38,10 @@ public:
                 int mid = (left + right) / 2;
                 if (top[mid] > cur)
                     right = mid;
-                else if (top[mid] < cur)
+                else if (top[mid] < cur)//target 在 mid值的右边,在mid值的左边
                     left = mid + 1;
                 else
-                    right = mid;//找左边界和找有边界无非就是相等的时候 是right=mid  还是left = mid + 1
+                    right = mid; //找左边界和找有边界无非就是相等的时候 是right=mid  还是left = mid + 1
             }
             //如果没有新起一堆牌
             if (left == piles)
@@ -57,3 +54,6 @@ public:
 //遍历次数 2
 //给定一个序列 在其中找出最长上升子序列 我们可以使用耐心排序算法。
 //需要额外开辟一个数组
+//不过我们使用的是耐心排序
+//寻找一个数的左边界 target 是当前牌值, left 是0 right 是牌堆数
+//最重要的不是写出来 而是可以在脑子里想出关键点

@@ -29,7 +29,7 @@ public:
         while (1)
         {
             //每选一次都会排序
-            sort(rbegin(m), rend(m));
+            sort(rbegin(m), rend(m));//按照字母的个数从大到小排序
             int pre_size = ans.size();
             //先选最大的数就可以了
             for (auto &[cnt, c] : m)
@@ -38,7 +38,7 @@ public:
                 if (cnt == 0 || ans.size() >= 2 && c == ans.back() && c == ans[ans.size() - 2])
                     continue;
                 ans += c;
-                cnt--;
+                cnt--;//引用卧槽
                 break;
             }
             //如果尺寸不变说明没得选了。
@@ -48,4 +48,5 @@ public:
         return ans;
     }
 };
-//遍历次数2
+//遍历次数3
+//只要返回任意一个这样的字符串类型就可以了

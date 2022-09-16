@@ -75,7 +75,7 @@ public:
         dp[0] = true;
 
         //是否可以凑出11，
-        for (int i = 0; i < nums.size(); i++)
+        for (int i = 0; i < nums.size(); i++)//遍历所有的硬币
             for (int j = target; j >= nums[i]; j--)
                 dp[j] = dp[j] || dp[j - nums[i]];
         return dp[target];
@@ -83,3 +83,7 @@ public:
 };
 //不就是找一些硬币凑出一个数
 //可以凑出
+//遍历次数 1
+//先求出一半是多少，然后看是否有凑成，
+//想想我们有什么 我们有一个数组, 然后还有一个target
+//总觉得还可以想点东西,但是又想不到什么,,,,,

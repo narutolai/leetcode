@@ -39,3 +39,16 @@ public:
         return cnt;
     }
 };
+//每次出现一个数都会把之前的都更新的
+//dp[i] = 1表示 dp[i]可以与后面的数构成回文串
+//一维dp数组
+//如果是 a b c b c a
+//那么就是慢慢开始
+/**
+ * a
+ * a b
+ * a b c
+ * a b c b
+ * a b c b c
+ * a b c c c a
+*/

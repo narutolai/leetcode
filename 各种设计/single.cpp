@@ -60,3 +60,16 @@ public:
         return &instance;
     }
 };
+template <typename T>
+class SingleTon
+{
+private:
+    SingleTon() {}//私有的构造函数
+
+public:
+    static T *Instance()
+    {
+        static T instance;
+        return &instance;
+    }
+}
