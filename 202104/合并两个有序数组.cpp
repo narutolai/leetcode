@@ -19,32 +19,37 @@ public:
     void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     {
 
-        int i = 0, j = 0, k = 0;
-        while (i < (m + k) && j < n)
+        int iIndexOfNums1 = 0; 
+        int iIndexOfNums2 = 0;
+        int iMergeNum= 0;
+        while (iIndexOfNums1 < (m + iMergeNum) && iIndexOfNums2 < n)
         {
-            if (nums1[i] <= nums2[j])
+            if (nums1[iIndexOfNums1] <= nums2[iIndexOfNums2])
             {
-                i++;
+                iIndexOfNums1++;
             }
             else
             {
-                int lastindex = m + k;
-                while (lastindex > i) //就是要把i开始到最后的几个数整体往后移动 backward_copy()相当于是
+                int iSizeOfNums1 = m + iMergeNum;
+                while (iSizeOfNums1 > iIndexOfNums1) //就是要把i开始到最后的几个数整体往后移动 backward_copy()相当于是
                 {
-                    nums1[lastindex] = nums1[lastindex - 1];
-                    lastindex--;
+                    nums1[iSizeOfNums1] = nums1[iSizeOfNums1 - 1];
+                    iSizeOfNums1--;
                 }
-                nums1[i] = nums2[j];
+                //把数往后挪然后给这个数让个位置
+                nums1[iIndexOfNums1] = nums2[iIndexOfNums2];
 
-                k++;
-                i++;
-                j++;
+                iMergeNum++;
+                iIndexOfNums1++;
+                iIndexOfNums2++;
             }
         }
         //剩余部分的转移
-        while (j < n)
+        while (iIndexOfNums2 < n)
         {
-            nums1[i++] = nums2[j++];
+            nums1[iIndexOfNums1++] = nums2[iIndexOfNums2++];
         }
     }
 };
+//尝试命名规范下,这样方便读懂程序的意思。
+// 合并多少数量这个遍历很重要的

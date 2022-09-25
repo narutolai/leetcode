@@ -53,7 +53,7 @@ public:
                     left = mid + 1;                 //否则增大left
                 }
             }
-            else
+            else// nums[mid] <= nums[right]
             {
                 if (nums[mid] < target && target <= nums[right])
                 {

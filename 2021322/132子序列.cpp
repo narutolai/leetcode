@@ -1,4 +1,6 @@
-// 给你一个整数数组 nums ，数组中共有 n 个整数。132 模式的子序列 由三个整数 nums[i]、nums[j] 和 nums[k] 组成，并同时满足：i < j < k 和 nums[i] < nums[k] < nums[j] 。
+// 给你一个整数数组 nums ，数组中共有 n 个整数。132 模式的子序列 由三个整数 nums[i]、nums[j] 和 nums[k] 组成，
+
+// 并同时满足：i < j < k 和 nums[i] < nums[k] < nums[j] 。
 
 // 如果 nums 中存在 132 模式的子序列 ，返回 true ；否则，返回 false 。
 
@@ -25,22 +27,23 @@ class Solution
 public:
     bool find132pattern(vector<int> &nums)
     {
-        int two = INT_MIN;
+        int ikNum = INT_MIN;
         // 保存3的单调栈，从底到顶递减
-        stack<int> s;
+        stack<int> desStack;//递减栈
         int n = nums.size();
         for (int i = n - 1; i >= 0; --i)
         {
             // 找到比2小的数字，那么满足条件
-            if (nums[i] >= two)
+            if (nums[i] >= ikNum)
             {
-                // 如果发现大于栈顶(破坏了单调性),那么要去更新栈和two的数值(two变为更大的数字)
-                while (!s.empty() && nums[s.top()] < nums[i])
+                // 仔细看这个while循环, 
+                while (!desStack.empty() && nums[desStack.top()] < nums[i])
                 {
-                    two = nums[s.top()];
-                    s.pop();
+                    ikNum = nums[desStack.top()];
+                    desStack.pop(); //不符合单调性 弹出就完事了
                 }
-                s.push(i);
+                desStack.push(i);
+                //在经过while循环和这一步后总是可以保证栈顶元素是大于ikNum的 单调栈的弹出
             }
             else
             {
@@ -54,7 +57,16 @@ public:
 /**\      
  *  | 
  *  |          *
- *  |       *     *
+ *  |             *
  *  |    *
  *  |----------------------->x
+ *  最右边那个数就是two
+ *  如果从前往后找,那么 第三个数的大小是要在中间,如果从后往前找,那么第三个数要最小就可以了.
+ * 
+ * ——————————————
+ * |
+ * | |        |
+ * | | |      |
+ * | | | |    |      递减栈
+ * ——————————————
 */

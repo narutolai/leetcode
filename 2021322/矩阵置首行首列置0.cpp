@@ -5,17 +5,17 @@ class Solution
 public:
     void setZeroes(vector<vector<int>> &matrix)
     {
-        bool row0 = false;
-        bool col0 = false;
+        bool row0HasZero = false;
+        bool col0HasZero = false;
         for (int i = 0; i < matrix.size(); i++)
             for (int j = 0; j < matrix[0].size(); j++)
             {
                 if (matrix[i][j] == 0)
                 {
                     if (i == 0)
-                        row0 = true;
+                        row0HasZero = true;
                     if (j == 0)
-                        col0 = true;
+                        col0HasZero = true;
                     matrix[i][0] = 0; //该行该列的第一个元素记录改行该列是否存在0
                     matrix[0][j] = 0;
                 }
@@ -29,12 +29,15 @@ public:
         }
 
         //最后要记得修改第一行和第一列
-        if (row0)
+        if (row0HasZero)
             for (int i = 0; i < matrix[0].size(); i++)
                 matrix[0][i] = 0;
-        if (col0)
+        if (col0HasZero)
             for (int i = 0; i < matrix.size(); i++)
                 matrix[i][0] = 0;
     }
 };
-//遍历次数 1 
+//遍历次数 
+//卧槽没懂????
+//卧槽没懂????
+//卧槽没懂????

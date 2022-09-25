@@ -3,15 +3,15 @@ class Solution
 public:
     bool checkOnesSegment(string s)
     {
-        int continue1 = 0;
+        int NumsOfContinue1 = 0;
         for (int i = 0; i < s.size(); i++)
         {
             if (s[i] == '1')
             {
-                if (continue1)
+                if (NumsOfContinue1)
                     return false;
                 else
-                    continue1 = 1;
+                    NumsOfContinue1 = 1;
                 while (s[i] == '1')
                 {
                     i++;

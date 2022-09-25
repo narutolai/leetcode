@@ -52,12 +52,12 @@ public:
         int i = 0, j = arr.size() - 1;
         while (i < arr.size() - 1 && arr[i] < arr[i + 1])
             i++;
-        if (i == j)
+        if (i == j)//这种就是属于没有驼峰不符合条件
             return false;
             
         while (j >= 1 && arr[j - 1] > arr[j])
             j--;
-        return i == j && i != 0;
+        return i == j && i != 0;//有且只有一个驼峰
     }
 }
 //就是驼峰状的山脉

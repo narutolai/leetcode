@@ -21,27 +21,6 @@
 class Solution
 {
 public:
-    string reverseWords(string s)
-    {
-        string result;
-        for (int i = 0; i < s.size(); i++)
-        {
-            if (s[i] != ' ')
-            {
-                string word;
-                while (s[i] != ' ' && i < s.size()) //可以直接截取substr吧
-                {
-                    word += s[i];
-                    i++;
-                }
-                result.insert(0, " " + word);
-            }
-        }
-
-        result.erase(0, 1);
-        return result;
-    }
-
     string reverseWords(string st1)
     {
         string result;
@@ -50,17 +29,17 @@ public:
             if (st1[i] != ' ')
             {
                 string word;
-                int stindex = i;
+                int startIndexOfWord = i;
                 while (st1[i] != ' ' && i < st1.size()) //这里换成直接记录起始坐标。
                 {
                     i++;
                 }
-                result.insert(0, " " + st1.substr(stindex, i - stindex));
+                result.insert(0, " " + st1.substr(startIndexOfWord, i - startIndexOfWord));
             }
         }
-        result.erase(0, 1);
+        result.erase(0, 1);//移除最开始的空格
     }
 };
 
-//遍历次数: 2
+//遍历次数: 2 这个比较快吧
 //还算有意思吧

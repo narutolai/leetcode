@@ -55,6 +55,8 @@ public:
         {
             delete count;
             delete _ptr;
+            count = nullptr;
+            _ptr = nullptr;
         }
     }
     T *get_ptr() { return _ptr; }

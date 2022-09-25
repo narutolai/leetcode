@@ -93,4 +93,4 @@ void postorder_stack(TreeNode *root)
         }
     }
 }
-//遍历次数 :1
+//遍历次数 :2 中序遍历

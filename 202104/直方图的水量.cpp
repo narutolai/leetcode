@@ -3,7 +3,7 @@
 class Solution
 {
 public:
-    int trap(vector<int> &height)
+    int trap(vector<int> &height)//直方图的水量
     {
         int sum = 0;
         int n = height.size();
@@ -28,3 +28,27 @@ public:
     }
 };
 //遍历次数 2
+class Solution
+{
+public:
+    int maxArea(vector<int> &height)//盛水最多的容器
+    {
+        int l = 0, r = height.size() - 1;
+        int res = 0;
+        while (l < r)
+        {
+            int area = min(height[l], height[r]) * (l - r);//1
+
+            res = max(area, res);
+            if (height[l] < height[r])
+            {
+                l++;
+            }
+            else    
+            {
+                r--;
+            }
+        }
+        return res;
+    }
+};

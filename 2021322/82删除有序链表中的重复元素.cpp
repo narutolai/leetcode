@@ -14,42 +14,7 @@ class Solution
 public:
     ListNode *deleteDuplicates(ListNode *head)
     {
-        ListNode *pre = nullptr;
-        ListNode *cur = head;
-        head = nullptr;
-        ListNode *Link = nullptr;
-        while (cur != nullptr)
-        {
-
-            if (((pre == nullptr) ? 1 : (pre->val != cur->val)) && ((cur->next == nullptr) ? 1 : (cur->val != cur->next->val)))
-            {
-                if (Link == nullptr)
-                {
-                    Link = cur;
-                    head = Link;
-                }
-                else
-                {
-                    Link->next = cur;
-                    Link = cur;
-                }
-            }
-            pre = cur;
-            cur = cur->next;
-        }
-        if (Link != nullptr)
-            Link->next = nullptr;
-        return head;
-    }
-};
-
-//这里贴下递归的
-class Solution
-{
-public:
-    ListNode *deleteDuplicates(ListNode *head)
-    {
-        if (!head || !head->next)
+        if (!head || !head->next)//为什么这里还要判断head->next,因为下面有使用到呀
         {
             return head;
         }
@@ -59,17 +24,16 @@ public:
         }
         else
         {
-            ListNode *move = head->next;
-            while (move && head->val == move->val)
+            ListNode *pstSameValueNode = head->next;
+            while (pstSameValueNode && head->val == pstSameValueNode->val)
             {
-                move = move->next;
+                pstSameValueNode = pstSameValueNode->next;
             }
-            return deleteDuplicates(move);
+            return deleteDuplicates(pstSameValueNode);
         }
         return head;
     }
 };
-//遍历次数 2
-//注意是有序链表的重复元素 有序 有序 有序!!!
-//此题妙啊 直接看递归的吧
-//看这个写法 应该是删除元素保留一个,就是会保留一个元素的。
+//我觉得写递归函数 要明确 参数是什么返回值是什么，然后剩下的就交给递归了 和 写动态规划方程一样要有整体思维,
+//比如针对ListNode *deleteDuplicates(ListNode *head)函数,这个函数的参数是一个链表头节点,然后可以返回一个没有重复元素的链表
+//

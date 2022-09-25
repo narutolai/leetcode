@@ -36,3 +36,4 @@ public:
         return result;
     }
 };
+//注意这个要连续重复多少次才行

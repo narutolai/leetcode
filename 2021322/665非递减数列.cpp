@@ -27,9 +27,13 @@ public:
         int count = 1;
         for (int i = 0; i < nums.size() - 1; i++)
         {
-            if (nums[i] > nums[i + 1])
+            if (nums[i] > nums[i + 1])//出现递减
             {
-                if (i == 0 || nums[i + 1] >= nums[i - 1])
+                if (count == 0)
+                    return false;
+                count--;
+
+                if (i == 0 || nums[i + 1] >= nums[i - 1]) 
                 {
                     nums[i] = nums[i + 1];
                 }
@@ -37,12 +41,17 @@ public:
                 {
                     nums[i + 1] = nums[i];
                 }
-                if (count == 0)
-                    return false;
-                count--;
             }
         }
         return true;
     }
 };
-//总结就是选择最保守的做法
+/**\
+ *  |
+ *  |           *
+ *  |              *
+ *  |       *
+ *  |----------------------->x
+ *         i-1  i  i+1 
+ */
+//在我们遇到递减的时候,需要判断导致递减的那个数的大小是在是否小于往左数第2个数

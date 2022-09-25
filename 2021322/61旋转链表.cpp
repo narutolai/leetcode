@@ -18,8 +18,8 @@ public:
         if (cur == nullptr)
             return 0;
       //首先我们统计出所有的节点个数
-        int count = 1;
-        while (cur->next != nullptr)
+        int count = 0;
+        while (cur)
         {
             count++;
             cur = cur->next;
