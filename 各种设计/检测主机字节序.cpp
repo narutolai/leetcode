@@ -17,3 +17,4 @@ int main()
     byteorder();
     return 0;
 }
+//在一个联合体中加一个一个短整形和union_byte[2];

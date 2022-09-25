@@ -1,6 +1,8 @@
-// 把字符串 s 看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，所以 s 看起来是这样的："...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....". 
+// 把字符串 s 看作是“abcdefghijklmnopqrstuvwxyz”的无限环绕字符串，
+// 所以 s 看起来是这样的："...zabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd....". 
 
-// 现在我们有了另一个字符串 p 。你需要的是找出 s 中有多少个唯一的 p 的非空子串，尤其是当你的输入是字符串 p ，你需要输出字符串 s 中 p 的不同的非空子串的数目。 
+// 现在我们有了另一个字符串 p 。你需要的是找出 s 中有多少个唯一的 p 的非空子串，尤其是当你的输入是字符串 p ，
+// 你需要输出字符串 s 中 p 的不同的非空子串的数目。 
 
 // 注意: p 仅由小写的英文字母组成，p 的大小可能超过 10000。
 
@@ -53,4 +55,7 @@ public:
     }
 };
 //能不能把这题理解为最长的连续递增
-//遍历次数 1
+//遍历次数 2
+//题目问的是p中有多少个环形子串,但是这个dp[i]数组确实表示以字母i结尾的最长的连续序列
+//然后再累加,,,
+//这个dp数组大小为26很妙

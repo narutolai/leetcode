@@ -50,7 +50,9 @@ public:
                         count[i] = count[j]; //更新数量
                     }
                     else if (dp[j] + 1 == dp[i]) //长度没更新 更新数量
+                    {
                         count[i] += count[j];
+                    }
                 }
             }
             max_ = max(max_, dp[i]);
@@ -66,4 +68,13 @@ public:
         return result;
     }
 };
-//遍历次数 1
+//遍历次数 2主要就是更新个数
+/**
+ *  if (dp[j] + 1 > dp[i]) //长度更新了
+     {
+      dp[i] = dp[j] + 1;   //更新长度dp[i]
+       count[i] = count[j]; //更新数量
+     }
+      else if (dp[j] + 1 == dp[i]) //长度没更新 更新数量
+       count[i] += count[j];
+*/

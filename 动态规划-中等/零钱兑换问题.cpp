@@ -18,20 +18,32 @@ class Solution
 public:
     int coinChange(vector<int> &coins, int amount)
     {
+        //初始化为amount + 1
         vector<int> dp(amount + 1, amount + 1);
         //凑成给定的金额 肯定是慢慢的金额从1 到amount
         //然后因为是最小 ，所以每一个位置填上最大值也是没有关系的
-        
-        dp[0] = 0;//amount为0的时候 当然是不需要硬币了
+
+        dp[0] = 0; //amount为0的时候 当然是不需要硬币了
 
         for (int i = 0; i < dp.size(); i++)
         {
             for (auto item : coins)
             {
                 if (i - item >= 0)
-                    dp[i] = min(dp[i], dp[i - item] + 1);
+                    dp[i] = min(dp[i], dp[i - item] + 1);//这种写法就必须要求 dp[i] 初始化为一个很大的值 但是dp[0] = 0;
             }
         }
         return (dp[amount] == amount + 1 ? -1 : dp[amount]);
     }
 };
+//最少是amount + 1
+//横轴是金额 纵轴是硬币数量
+//离散表格的填充,离散表格的填充
+/**
+ * dp[money] 表示凑成i 所需的最少硬币数
+ * for money 0---->amount:
+ *      for coin :coins:
+ *          dp[money] = min(dp[money], dp[money-coin] + 1);
+ * 但是这个dp表是一维的
+ * //每多增加一块钱,我们都要更新下 每多增加一块钱
+*/

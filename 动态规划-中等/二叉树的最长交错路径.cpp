@@ -22,11 +22,11 @@
 class Solution {
 public:
     int ans=0;
-    void dfs(TreeNode *root,int flag,int dir)
+    void dfs(TreeNode *root,int toright,int dir)
     {
         if(!root) return ;
         ans=max(ans,dir);
-        if(flag)// flag为1表示右走
+        if(toright)// toleft为1表示右走
         {
             dfs(root->left,0,dir+1);//下一步只有左走才可以使得交错路径加1
             dfs(root->right,1,1);   //如果下一步也是右走,那交错路径就还是从1开始计数
@@ -44,4 +44,4 @@ public:
 
     }
 };
-//遍历次数 1
+//遍历次数 2

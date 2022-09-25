@@ -46,7 +46,7 @@ void put_msg( msgqueue* msgqu , char *msg, int msglen)
 {
     //剩余空间不够放一条消息怎么办
     int leftspace  = msgqu->getoff + msgqu->bufsize - msgqu->putoff;
-    if(leftspace >= msglen + 4)
+    if(leftspace >= msglen + 4)//消息长度
     {
         if(msgqu->bufsize - msgqu->putoff >= msglen + 4)
         {
@@ -64,7 +64,7 @@ void put_msg( msgqueue* msgqu , char *msg, int msglen)
     else
     {
         //没有空间放消息了
-        //wait.....
+        //wait..... 在寻找一块更大的区域?? 比如 2*BUFSIZE 的大小
         printf("no left space\n");
     }
 }

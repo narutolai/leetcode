@@ -73,3 +73,6 @@ public:
         return dfs(root, head) || isSubPath(head, root->left) || isSubPath(head, root->right);
     }
 };
+//题目是说给定一个链表 看二叉树中是否有这个子序列
+//遍历次数 2
+//coding是一回事 最好可以仔细的思考下

@@ -3,7 +3,7 @@
 using namespace std;
 
 
-//一个支持支持移动构造函数的类
+//一个支持支持移动构造函数的带指针的类
 class Mystring
 {
 public:
@@ -28,7 +28,7 @@ public:
         m_data = new char[strlen(rhs.m_data) + 1];
         strcpy(m_data, rhs.m_data);
     }
-    Mystring &operator=(const Mystring &rhs)
+    Mystring &operator=(const Mystring &rhs)//赋值返回自身的引用
     {
         cout << "default assignment" << endl;
         char *pOrig = m_data;
@@ -45,7 +45,7 @@ public:
         this->m_data = rhs.m_data;
         rhs.m_data = nullptr;
     }
-    Mystring &operator=(Mystring &&rhs)
+    Mystring &operator=(Mystring &&rhs)//赋值返回自身的引用,赋值返回自身的引用
     {
         cout << "move assignment" << endl;
         if (this != &rhs)
@@ -104,3 +104,4 @@ int main()
     cout << "normal exist" << endl;
     return 0;
 }
+//赋值返回自身的引用
