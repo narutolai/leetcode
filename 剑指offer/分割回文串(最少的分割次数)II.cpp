@@ -30,6 +30,7 @@ public:
 		for (int i = n - 1; i >= 0; i--)
 			for (int j = i + 1; j < n; j++)
 				mat[i][j] = (s[i] == s[j]) && mat[i + 1][j - 1];
+		// 这个算是空间换时间喽,如果不想的话直接写一个函数judge(s,i,j)也行
 		// a b c d e
 
 		vector<int> dp(n, INT_MAX);
@@ -48,8 +49,5 @@ public:
 		return dp[n - 1];
 	}
 };
-//遍历次数 1
-//先用了一个矩阵来存储i,j是否是回文串
-//思想是 如果 s[0-i]是回文串 我们再对其进行分割
-//其实这个状态转移方程有点难度 ,dp[i] = min(dp[i], dp[j]+1) for j:0-->i-1,if (mat[j+1][i] == true)。
-//怎么感觉在哪里见过呢
+//2022/09/25 22:57
+// 时间复杂度也是n2,

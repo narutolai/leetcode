@@ -20,21 +20,22 @@ public:
     }
     void adjustheap(vector<int> &nums, int st_index, int et_index)
     {
-        int temp = nums[st_index];
+        int parentIndex = st_index;
+        int compareNum = nums[parentIndex];
         //注意是2*i+1因为下标是从0开始的
-        for (int i = 2 * st_index + 1; i <= et_index; i = 2 * i + 1)
+        for (int sonIndex = 2 * parentIndex + 1; sonIndex <= et_index; sonIndex = 2 * sonIndex + 1)
         {
-            if (i + 1 <= et_index && nums[i + 1] > nums[i])
+            if (sonIndex + 1 <= et_index && nums[sonIndex + 1] > nums[sonIndex])
             {
-                i++;
+                sonIndex++;
             }
-            if (nums[i] > temp)
+            if (nums[sonIndex] > compareNum)//两个子节点一个父节点 求这三个点中的最小值/最大值.
             {
-                nums[st_index] = nums[i];
-                st_index = i;
+                nums[parentIndex] = nums[sonIndex];
+                parentIndex = sonIndex;
             }
         }
-        nums[st_index] = temp;
+        nums[parentIndex] = compareNum;
     }
 
     MyHeap(){};
@@ -89,6 +90,7 @@ public:
 //数据流中第K大的数 ,直接弄一个元素大小为K的小顶堆
 //那么堆顶元素就是里面最小的或者说第K大的元素
 //如果下一个元素 比堆顶元素小,那么不用比较，如果比堆顶元素大那就要替换下
-//当堆顶元素被替换后 对首元素进行降沉 
+//当堆顶元素被替换后 要重新调整堆,堆顶元素就是数据流中的第K大的数
 //但是要先push 3个很小的数
 //遍历次数 2
+// 比如数据流是 9 8 6 .....接着7来了...

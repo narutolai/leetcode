@@ -27,7 +27,7 @@ public:
         //每次都加数组内k的值会超时的
         double beginsum = accumulate(iter, iter + k, 0);
         double maxaverage = beginsum / k;
-        while ((iter + k) != nums.end())//其实还是感觉没有这必要的啊
+        while ((iter + k) != nums.end()) //其实还是感觉没有这必要的啊
         {
             iter++;
             beginsum += *(iter + k - 1);
@@ -37,4 +37,25 @@ public:
         }
         return maxaverage;
     }
+    double findMaxAverage(vector<int> &nums, int k)
+    {
+        int Windowleft = 0, Windowright = 0;
+        int size = nums.size();
+        int sum = 0;
+        double avg = 0;
+        while (Windowright < size)
+        {
+            sum += nums[Windowright];
+            if (Windowright - Windowleft + 1 >= k)
+            {
+                double = max(avg, sum / (k * 1.0));
+                sum -= nums[Windowleft];
+                Windowleft++;
+            }
+            Windowright++;
+        }
+        return avg;
+    }
 };
+//2022-09-30 17:15
+//下面是我自己的写的 窗口就是这样的嘛

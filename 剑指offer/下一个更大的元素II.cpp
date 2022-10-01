@@ -47,10 +47,11 @@ public: //非循环数组
 		int n = nums.size();
 		vector<int> result(nums.size(), -1);
 		//单调递减栈 存储下标 不存数
+		// 存储单调
 		stack<int> st;
 		for (int i = n - 1; i >= 0; i--)
 		{
-			while (!stk.empty() && nums[i] > nums[stk.top()])
+			while (!stk.empty() && nums[i] > nums[stk.top()])//当前元素大于栈顶下标所在的元素
 				stk.pop();
 			if (!stk.empty())
 				result[i] = stk.top();
@@ -60,3 +61,7 @@ public: //非循环数组
 	}
 };
 //遍历次数 1
+//这图要这么思考
+/**
+ * 
+*/

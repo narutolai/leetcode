@@ -26,6 +26,7 @@ public:
         int n = s.size();
         // dp[i][j]的意思是s[0~i]内t[0~j]出现的次数
         vector<vector<long>> dp(m + 1, vector<long>(n + 1));
+        //注意这题 m为t串 n为s串
         for (int i = 0; i <= n; i++)
             dp[0][i] = 1;
         for (int i = 1; i <= m; i++)

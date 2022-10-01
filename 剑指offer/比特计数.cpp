@@ -13,16 +13,6 @@
 class Solution
 {
 public:
-    int countones(int x)
-    {
-        int i = 0;
-        while (x)
-        {
-            x &= (x - 1);
-            i++;
-        }
-        return i;
-    }
     vector<int> countBits(int num)
     {
         vector<int> result;

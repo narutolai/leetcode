@@ -133,7 +133,8 @@ public:
                     else
                     {
                         result += s2i[s[i]];
-                        i++;
+                        i++; 
+                        
                     }
                 }
                 else

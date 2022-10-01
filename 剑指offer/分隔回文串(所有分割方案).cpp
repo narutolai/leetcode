@@ -18,7 +18,7 @@ class Solution
 {
 public:
 	vector<vector<string>> result;
-	//这个函数用来判断是不是回文
+	//这个函数用来判断s[0-j]是不是回文
 	bool judge(string s,int j)
 	{	
 		int i=0;

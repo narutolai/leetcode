@@ -111,7 +111,7 @@ public:
             tail->next = f.ptr;
             tail = tail->next;
             if (f.ptr->next)
-                q.push({f.ptr->next->val, f.ptr->next});
+                q.push({f.ptr->next->val, f.ptr->next});//每次push的时候都在调整堆 所以这个东西的时间复杂度就是nlogn
         }
         return head.next;
     }

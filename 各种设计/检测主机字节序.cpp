@@ -11,6 +11,10 @@ void byteorder()
     test.value = 0x0102;
     if ((test.union_byte[0] == 1) && (test.union_byte[1] == 2))
         printf("big endian\n");
+        else
+        {
+            printf("small\n");
+        }
 }
 int main()
 {

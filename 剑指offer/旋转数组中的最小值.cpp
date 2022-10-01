@@ -15,6 +15,9 @@ public:
                 left = mid + 1;
             else
                 right--;      //如果mid == right 为什么是right--呢 我想不明白啊
+                            //通过实验我发现 最后left = right = mid的时候,就会走到这里然后right--退出循环
+                            //2022-09-30
+                            // 但是left == right的时候 while也不成立呀
         }
         return numbers[left];
     }
@@ -30,3 +33,18 @@ public:
     }
 };
 //既然是旋转数组，那么肯定是 
+// 竟然可以用二分法找一个最小的数
+// 二分法中一个死循环的判断
+/**
+ * while(left < right)
+ * { 
+ *  int mid = (left+ right) / 2;
+ * if mid == left == right
+ * }
+*/
+//2022-09-30 有问题 不懂  不懂 还是不懂...
+// mid永远是一半,但是又因为整除的情况
+// 有这么几种情况
+//              right = mid , right = mid+1
+// left = mid 
+// left = mid+1

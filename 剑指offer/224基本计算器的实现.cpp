@@ -18,7 +18,7 @@ public:
 			c = s[index++];
 			//s.erase(0,1);//是不是这里太费劲了
 			if (isdigit(c))
-			{ 	
+			{ 	 
 				num = num * 10 + (c - '0');
 			}
 			
@@ -39,7 +39,7 @@ public:
 					stk.push(-num);
 					break;
 				case '*':
-					num = num * stk.top();
+					num = num * stk.top();//要判空的吧 不然的话是有问题的
 					stk.pop();
 					stk.push(num);
 					break;
@@ -67,7 +67,6 @@ public:
 		return result;
 	}
 };
-//遍历次数+1
-//注意栈中的元素最后会累加 4个纯if 没有else 然后累加栈中的元素
-//index = s.size() 很难判断 当前符号是 = - * / 以及表达式的最后一个元素时要进入switch
-//char c = s[index++] ;比较好
+//while中4f
+//stk char  num
+//遇见符号switch 前一个

@@ -12,14 +12,16 @@ public:
         vector<int> result(rowIndex + 1, 0);
         result[0] = 1;
         int i = 0;
-        while (i < rowIndex)
+        for (int i = 0; i < rowIndex; ++i)
         {
             for (int j = i + 1; j > 0; j--)
             {
                 result[j] += result[j - 1];
             }
-            i++;
         }
         return result;
     }
 };
+
+// 2022/09/30 17:35
+//杨辉三角有这么好玩的东西???

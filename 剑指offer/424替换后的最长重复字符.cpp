@@ -35,9 +35,9 @@ public:
         {
             //
             count[s[i]]++;
-            //
+            //这个窗口是会变的
             maxcount = max(maxcount, count[s[i]]);
-            //
+            //maxcount不会变小只会变大并不是说
             if (i - left + 1 > maxcount + k) 
             {
                 count[s[left]]--;
@@ -49,4 +49,6 @@ public:
 };
 //我们可以尝试分析一下这个序列 
 // BACAADF  假设 k = 1
-// 
+// 2022/9/25 21:07
+//---->  这个窗口是会变的和maxcount有关
+//if 和 最后的结果

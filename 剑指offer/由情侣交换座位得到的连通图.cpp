@@ -23,7 +23,7 @@ public:
         father[rootx] = rooty;
         count--;
     }
-    int get_count() { return count; }
+    int get_count() { return count; }//返回几个联通分量。
 };
 
 test3::test3(int n)
