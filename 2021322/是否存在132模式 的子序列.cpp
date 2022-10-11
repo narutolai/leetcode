@@ -31,12 +31,14 @@ public:
         // 保存3的单调栈，从底到顶递减
         stack<int> desStack;//递减栈
         int n = nums.size();
+        //从后往前
         for (int i = n - 1; i >= 0; --i)
         {
             // 找到比2小的数字，那么满足条件
-            if (nums[i] >= ikNum)
+            if (nums[i] >= ikNum)//i琨!!!
             {
-                // 仔细看这个while循环, 
+                // 如果当前元素大于栈顶元素,就弹出栈顶元素,
+                // 通过这个过程 可以找到 3 2 模式 ,而且iKNum永远可以记录ikNum这个值.
                 while (!desStack.empty() && nums[desStack.top()] < nums[i])
                 {
                     ikNum = nums[desStack.top()];
@@ -70,3 +72,4 @@ public:
  * | | | |    |      递减栈
  * ——————————————
 */
+//2022/10/03 17:30 递减栈 一般如果是用栈来解决可以想下是递增栈还是递减栈

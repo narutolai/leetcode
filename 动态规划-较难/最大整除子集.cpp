@@ -41,8 +41,12 @@ public:
         for (int i = 1; i < size; i++)
             for (int j = i - 1; j >= 0; j--)
             {
-                if (nums[i] % nums[j] == 0 && dp[j] + 1 > dp[i])//为什么是+1大于dp[i]啊???????
-                {           //如果dp[j] + 1 = dp[i] 那也就没必要赋值了对吧，
+                if (nums[i] % nums[j] == 0 && dp[j] + 1 > dp[i]) //为什么是+1大于dp[i]啊???????
+                {                                               
+                    /**
+                     * 为什么是 dp[j] + 1 > dp[i],因为要确定当前数除的前一个数的坐标
+                     * 其实就是 dp[i] = max(dp[i],dp[j] + 1);
+                     */
                     dp[i] = dp[j] + 1;
                     pre[i] = j;
                 }
@@ -54,14 +58,12 @@ public:
                 }
             }
         vector<int> res;
-        
+
         for (int i = maxind; i != -1; i = pre[i])
             res.insert(res.begin(), nums[i]);
         return res;
     }
 };
-
-//没有明白哦我擦
-//没有明白为什么是
-//遍历次数 3  没懂哦
-//没懂我擦
+/**
+ * 最长等差数列 最长递增子序列
+ */

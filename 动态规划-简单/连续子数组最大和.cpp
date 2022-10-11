@@ -22,10 +22,11 @@ public:
     int maxSubArray(vector<int> &nums)
     {
         //这个必须是连续的
+        // 连续很重要 连续很重要 连续很重要!!
         int maxnum = nums[0];
         for (int i = 1; i < nums.size(); i++)
         {
-            //前一个数大于0就修改否则就不要修改这个数
+            //从1 开始 前一个项大于0就加起来
             if (nums[i - 1] > 0)
                 nums[i] += nums[i - 1];
             maxnum = max(maxnum, nums[i]);

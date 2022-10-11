@@ -24,25 +24,6 @@
 // 输出：true
 // 解释：长按名字中的字符并不是必要的。
 
-
-//这个方法比较好
-//根据题意能够分析得到：字符串 \textit{typed}typed 的每个字符，有且只有两种「用途」：
-
-// 作为 \textit{name}name 的一部分。此时会「匹配」\textit{name}name 中的一个字符
-
-// 作为长按键入的一部分。此时它应当与前一个字符相同。
-
-// 如果 \textit{typed}typed 中存在一个字符，它两个条件均不满足，则应当直接返回 \textit{false}false；
-//否则，当 \textit{typed}typed 扫描完毕后，我们再检查 \textit{name}name 的每个字符是否都被「匹配」了。
-
-// 实现上，我们使用两个下标 i,ji,j 追踪 \textit{name}name 和 \textit{typed}typed 的位置。
-
-// 当 \textit{name}[i]=\textit{typed}[j]name[i]=typed[j] 时，说明两个字符串存在一对匹配的字符，此时将 i,ji,j 都加 11。
-
-// 否则，如果 \textit{typed}[j]=\textit{typed}[j-1]typed[j]=typed[j−1]，说明存在一次长按键入，此时只将 jj 加 11。
-
-// 最后，如果 i=\textit{name}.\text{length}i=name.length，说明 \textit{name}name 的每个字符都被「匹配」了
-
 class Solution
 {
 public:
@@ -71,3 +52,5 @@ public:
 //是否是长安输入
 //遍历次数 1
 //一个朴素的想法：如果typed 是 name的长按,那么我们可以肯定 typee的长度一定是大于等于name的长度的。
+// 2022/10/03 
+//相等都加 否则j++ 前提是j = j-1;

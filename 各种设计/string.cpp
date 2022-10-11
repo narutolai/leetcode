@@ -21,7 +21,7 @@ public:
             *m_data = '\0';
         }
     }
-    // 拷贝构造赋值
+    // 拷贝构造赋值 深拷贝
     Mystring(const Mystring &rhs)
     {
         cout << "copy construct" << endl;
@@ -34,7 +34,7 @@ public:
         char *pOrig = m_data;
         m_data = new char[strlen(rhs.m_data) + 1];
         strcpy(m_data, rhs.m_data);
-        delete[] pOrig;
+        delete[] pOrig;//注意是个数组 注意是个数组
         return *this;
     }
 

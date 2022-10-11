@@ -33,7 +33,7 @@ public:
     //移动赋值 函数 是这么写的吗
     shared_ptr<T> &operator=(shared_ptr<T> &&other)
     {
-        if (this != &other)//移动赋值 是要较少自己的引用对象的
+        if (this != &other)//移动赋值 是要减少自己的引用对象的
         {
             if (--*count == 0 && ptr)
             {
@@ -115,10 +115,10 @@ public:
         if (ptr)
             delete ptr;
     }
-
+    //删除拷贝构造和拷贝赋值函数
     MyUniquePtr(const MyUniquePtr<T> &p) = delete;
     MyUniquePtr<T> &operator=(const MyUniquePtr<T> &p) = delete;
-
+    //实现移动构造和移动赋值函数
     MyUniquePtr(MyUniquePtr<T> &&p) noexcept;
     MyUniquePtr<T> &operator=(MyUniquePtr<T> &&p) noexcept;
 

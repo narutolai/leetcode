@@ -28,6 +28,8 @@
 // 正方形的总数 = 6 + 1 = 7.
 
 //这个跟最大正方形那个题目一样，最后累加一下就可以了
+#include<vector>
+using namespace std;
 class Solution
 {
 public:
@@ -44,7 +46,7 @@ public:
                 { //第一行或第一列
                     f[i][j] = matrix[i][j];
                 }
-                else if (matrix[i][j] == 1)
+                else if (matrix[i][j] == 1)//等于1 才加
                 {
                     f[i][j] = min(min(f[i][j - 1], f[i - 1][j]), f[i - 1][j - 1]) + 1;
                 }
@@ -58,3 +60,8 @@ public:
 //f[i][j]的意思是以f[i][j]为正方形的右下角正方形的最大边长是多少，当然这个正方形是全由1组成的正方形
 //如果f[i][j] = 3 该正方形最大边长是3 ，那么肯定有一个边长为2的正方形，肯定也有一个边长为1的正方形，所以直接+3
 //就是正方形的个数 如果当前值为1 如果为0 那就是0
+int main()
+{
+
+    return 0;
+}

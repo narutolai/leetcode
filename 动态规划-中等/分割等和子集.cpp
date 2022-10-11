@@ -15,33 +15,7 @@
 //就是说数组中某些元素的累加和是否可以到达一半，索引从0开始 深度优先搜索
 
 //递归--->带备忘录的递归--->动态规划
-class Solution
-{
-public:
-    bool dfs(int target, vector<int> &nums, int j)
-    {
-        if (target == 0)
-            return true;
-        if (j == nums.size())
-            return false; //遍历完所有项目
-        if (target < 0)
-            return false;
-        return dfs(target - nums[j], nums, j + 1) || dfs(target, nums, j + 1); //减或不减跳过j项
-    }
-    bool canPartition(vector<int> &nums)
-    {
-        int sum = accumulate(nums.begin(), nums.end(), 0); //数组总和
-        sort(nums.rbegin(), nums.rend());                  //数组排序
-        int target = sum / 2;
-        if (sum % 2 == 1)
-            return false;
-        if (nums[0] > target)
-            return false;
-        if (nums[0] == target)
-            return true;
-        return dfs(target, nums, 0);
-    }
-};
+
 //动态规划的解法 0-1背包问题
 /*
 事实上，这是一个典型的“动态规划”问题，并且它的“原形”是“0-1 背包问题”。
@@ -81,9 +55,39 @@ public:
         return dp[target];
     }
 };
-//不就是找一些硬币凑出一个数
-//可以凑出
-//遍历次数 1
-//先求出一半是多少，然后看是否有凑成，
-//想想我们有什么 我们有一个数组, 然后还有一个target
-//总觉得还可以想点东西,但是又想不到什么,,,,,
+/**
+ * 竖轴硬币种类,横轴是要凑的价格
+ *    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+ * 1
+ * 2
+ * 5
+ * 10
+ * 
+ * 这种问题有多个变种
+ * 1.每种硬币数量有限.
+ * 2.每种硬币数量无限.
+*/
+/**
+ * 背包问题 有一个固定容量的背包,以及不同价值的物品物品有一定的容量,求可以装入背包的最大价值
+ * 01背包:每种物品只有一件. 首先如果背包容量够的话直接把所有物品都装进去就行了,现在肯定是不够装的
+ *  横轴背包容量 纵轴是单个物品的容量
+ * 白话  针对每一种固定的容量,我们遍历所有可能的物品 看放哪个的价值最大。
+ * dp[j] = max(dp[j], dp[j- w[i]] + v[i]) for item[i]; j逆向 因为硬币数量是1个所以只能逆向
+ * dp[]
+ *    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+ * 1
+ * 2
+ * 5
+ * 10
+ * 
+ * 完全背包 物品无限数量
+ * dp[j] = max(dp[j], dp[j- w[i]] + v[i]) for item[i];j正向
+ * 
+ * dp[1] = max(dp[0]+v[1], dp[1]) = dp[0]+v[1];//为什么正向 就是因为我这个硬币数量是无限的
+ * dp[2] = max(dp[1]+v[1], dp[2]) = dp[1]+v[1];
+ * 
+ * 
+ * 
+ * 多重背包
+ * 
+*/

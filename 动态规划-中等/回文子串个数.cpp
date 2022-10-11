@@ -13,6 +13,14 @@
 // 输出: 6
 // 说明: 6个回文子串: "a", "a", "a", "aa", "aa", "aaa".
 
+/**
+ * a      1
+ *  a     2
+ * aa
+ *   a    3
+ *  aa
+ * aaa
+*/
 class Solution
 {
 public:

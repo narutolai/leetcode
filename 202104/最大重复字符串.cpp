@@ -26,9 +26,10 @@ public:
                 {
                     wIndex++;
                     curSor++;
-                    wIndex %= wSize;
+                    wIndex %= wSize;//对其取余
                 }
-                result = max(result, (curSor - index) / wSize);
+                //优化还是可以优化的.....
+                result = max(result, (curSor - index) / wSize);//最大重复次数
             }
             //
             index++;
@@ -37,3 +38,4 @@ public:
     }
 };
 //注意这个要连续重复多少次才行
+//2022/10/03

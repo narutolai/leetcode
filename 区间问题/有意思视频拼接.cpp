@@ -35,7 +35,7 @@
 // 输入：clips = [[0,4],[2,8]], T = 5
 // 输出：2
 // 解释：
-// 注意，你可能录制超过比赛结束时间的视频。
+// 注意，你可能录制超过比赛结束时间的视频。摄像头忘了关机是不
 
 class Solution
 {
@@ -50,18 +50,18 @@ public:
         int preEnd = 0;
         sort(clips.begin(), clips.end(),comp);
         
-        int i = 0, ans = 0, end_t;
+        int i = 0, ans = 0, preEndCopy;
 
         while (i < clips.size() && preEnd < T)
         {
-            //在当前开始时间小于前一个片段的结束时间下，
+            
             if (clips[i][0] <= preEnd) //
             {
-                end_t = preEnd;
-                //找到最大的结束时间
-                while (i < clips.size() && clips[i][0] <= end_t) 
+                preEndCopy = preEnd;// 为什么这里要存下
+               
+                while (i < clips.size() && clips[i][0] <= preEndCopy) //因为这里会用到
                 {                                                
-                    preEnd = max(preEnd, clips[i][1]);            
+                    preEnd = max(preEnd, clips[i][1]);  //因为这个地方会改变这个值          
                     i++;
                 }
                 ans++;
@@ -72,15 +72,6 @@ public:
         return preEnd >= T ? ans : -1;
     }
 };
-//就是要选取最少的片段来覆盖整个视频
-// 先按照开始时间排序，开始时间相同的话 按照结束时间排序
-// |    |
-//    |    |
-//    |        |
-//题目是要求返回的最少的片段数量，
-//假设我有了第一个视频 也就是从0 到 5分钟的 肯定是0开始的对吧
-//那么第二个视频要怎么选呢，肯定是 开始时间在0-5之间 然后结束时间越晚越好的啊
-//所以肯定要知道上一个视频的结束时间  
-//略懂 略懂
-//将片段排序 然后开始时间相同选择最晚的结束时间
-//遍历次数2
+//就一个上个视频的结束时间
+// 记住了 总共就一个end_copy
+// 怎么感觉这个和区间合并问题是一个意思呢

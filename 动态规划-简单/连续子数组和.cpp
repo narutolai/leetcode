@@ -14,16 +14,20 @@
 
 //累加余数 对应下标 哈希表 两数之和
 
+#include <unordered_map>
+#include <vector>
+#include<iostream>
+using namespace std;
 class Solution
 {
 public:
     bool checkSubarraySum(vector<int> &nums, int k)
-    {   //<累积 余数,下标>
+    { //<累积 余数,下标>
         unordered_map<int, int> map_;
         //初始时刻，余数为0的时候，把其坐标-1也存进去，其实就是0的左边
         map_[0] = -1;
         int sum = 0;
-        //i位置处的余数，不过是余数对应i下标
+        // i位置处的余数，不过是余数对应i下标
         for (int i = 0; i < nums.size(); i++)
         {
             sum += nums[i];
@@ -31,7 +35,7 @@ public:
                 sum = sum % k; //取余数
             if (map_.count(sum))
             {
-                if (i - map_[sum] > 1)
+                if (i - map_[sum] > 1)//没问题是要大于1确实是要大于1
                     return true; //因为题目说了长度至少为2
             }
             else
@@ -41,3 +45,12 @@ public:
     }
 };
 //遍历次数+3
+
+int main()
+{
+    Solution so;
+    vector<int> nums = {1, 2};
+    bool value = so.checkSubarraySum(nums, 3);
+    cout << value << endl;
+    return 0;
+}

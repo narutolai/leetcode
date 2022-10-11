@@ -36,6 +36,8 @@ public:
         //dp[i]以i为终点的等差数列       <公差, 长度>
         unordered_map<int, unordered_map<int, int>> dp;
 
+        //选定一个数为终点，然后遍历前面的数、
+        // 感觉有点像最长上升子序列啊我擦!!!
         for (int i = 1; i < size; i++)
             for (int j = 0; j < i; j++)
             {
@@ -47,14 +49,13 @@ public:
 
                 //如果该公差之前没有
                 if (!dp[i][dif])
-                    dp[i][dif] = 2; //就新录入
+                    dp[i][dif] = 2; //就新录入 长度至少为2
                 
                 maxlen = max(maxlen, dp[i][dif]);
             }
         return maxlen;
     }
 };
-//我靠 这个题目没有规定公差为多少 之前做了一道题目是有公差的
-//也是oN的平方的啊
-//这题目还有点难度的
-//我已经忘记怎么做了
+/**
+ *    可以类比最长上升子序列问题!!!!
+*/

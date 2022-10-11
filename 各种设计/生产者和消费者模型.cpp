@@ -17,7 +17,7 @@ using namespace std;
 //互斥锁
 mutex mut;
 //条件变量
-condition_variable con;
+condition_variable con; //是不是写错了怎么用一样的条件变量
 //队列，模拟缓冲区
 queue<int> que;
 void Producter()
@@ -27,12 +27,12 @@ void Producter()
     {
         Sleep(10);
         std::unique_lock<std::mutex> lck(mut);
-        while (que.size() > MAX_SIZE)
+        while (que.size() > MAX_SIZE) 
         {
-            con.wait(lck);
+            con.wait(lck);//满了挂起
         }
         int data = rand();
-        que.push(data);
+        que.push(data);  
         cout << this_thread::get_id() << "生产了产品：" << data << endl;
         con.notify_all();
     }
@@ -41,10 +41,10 @@ void Customer()
 {
     while (true)
     {
-        std::unique_lock<std::mutex> lck(mut);
+        std::unique_lock<std::mutex> lck(mut);//空了别取
         while (que.empty())
         {
-            con.wait(lck);
+            con.wait(lck);//空了也挂起
         }
         cout << this_thread::get_id() << "消费了产品：" << que.front() << endl;
         que.pop();

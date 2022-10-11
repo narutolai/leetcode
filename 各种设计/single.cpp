@@ -67,9 +67,39 @@ private:
     SingleTon() {}//私有的构造函数
 
 public:
-    static T *Instance()
+    static T *Instance()//静态成员函数,属于类而不属于对象
     {
-        static T instance;
+        static T instance;//全局唯一静态对象
         return &instance;
     }
 }
+//陈硕的
+template<typename T>
+class Singleton
+{
+ public:
+  Singleton() = delete;
+  ~Singleton() = delete;
+
+  static T& instance()
+  {
+    pthread_once(&ponce_, &Singleton::init);
+    return *value_;
+  }
+
+ private:
+  static void init()
+  {
+    value_ = new T();
+  }
+
+ private:
+  static pthread_once_t ponce_;
+  static T*             value_;
+};
+
+template<typename T>
+pthread_once_t Singleton<T>::ponce_ = PTHREAD_ONCE_INIT;
+
+template<typename T>
+T* Singleton<T>::value_ = NULL;

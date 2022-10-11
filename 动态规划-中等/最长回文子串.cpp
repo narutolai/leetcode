@@ -12,7 +12,7 @@ public: //解码总数 我靠 这玩意儿有问题啊
         {
             //
             int length1 = expand(s, i, i);
-            int length2 = expand(s, i, i + 1);//这里不会越界的吗
+            int length2 = expand(s, i, i + 1);//这里不会越界的吗没关系expand函数里做了判断
             //获取最长的字串长度
             int max_ = max(length1, length2);
 

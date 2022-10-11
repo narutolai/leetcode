@@ -91,7 +91,7 @@ public:
         data_cond.notify_one();
     }
     /**
-     * 针对pop()函数我们实现其两个变种:try_pop()和wait_pop(),前者无需等待，后者将会等待
+     * 针对pop()函数我们实现其两个变种:try_pop()和wait_pop(),前者无需等待，后者将会等待(阻塞)
     */
     void wait_and_pop(T &value)
     {

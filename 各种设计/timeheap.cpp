@@ -27,7 +27,8 @@ public:
 	}
 
 public:
-	time_t expire;
+	int repeated; //是否重复 -1,总是重复,大于0就是定时次数
+	time_t expire;//到期时间戳
 	void (*cb_func)(client_data *);
 	client_data *user_data;
 };
@@ -101,7 +102,7 @@ private:
 		while (hole > 0)
 		{
 			//父节点
-			parent = (hole - 1) / 2;
+			parent = (hole - 1) / 2;//一定要减1
 			if (array[parent]->expire <= timer->expire)
 			{
 				break;
@@ -128,7 +129,7 @@ private:
 		return array[0];
 	}
 
-	void pop_timer()
+	void pop_timer()//堆的弹出和增加问题。
 	{
 		if (empty())
 		{
@@ -317,7 +318,7 @@ class time_heap
                 if(timer->expire > array[parent]->expire) //应该是金字塔形状的
                     break;
                
-                array[hole] = array[parent];
+                array[hole] = array[parent]5333333  ;
                 hole = parent;
             }
             array[hole] = timer;
